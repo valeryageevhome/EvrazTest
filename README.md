@@ -18,7 +18,6 @@
    ```bash
    git clone https://github.com/valeryageevhome/EvrazTest.git
 
-
 Откройте проект в Primo RPA Studio.
 
 Проверьте входные файлы: убедитесь, что в рабочей папке присутствуют Справочники.xlsx и каталоги с исходными отчетами.
