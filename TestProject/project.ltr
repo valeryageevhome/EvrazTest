@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-16"?>
+<LTProjectResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <WatchScripts />
+    <Ignored>
+        <KeyValueItem>
+            <Key>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Web\Download.ltw</Key>
+            <Value>f42ecea7-b6c9-47cd-88a7-12d412c3646c</Value>
+        </KeyValueItem>
+    </Ignored>
+    <Breakpoints>
+        <KeyValueItem>
+            <Key>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Excel\UnionExcel.ltw</Key>
+            <Value>81405bc1-dbd8-4597-99cd-c78c30985f86</Value>
+        </KeyValueItem>
+    </Breakpoints>
+    <BreakpointLines />
+    <Git />
+    <LastOpenedItems>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\MainProcess.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Web\Download.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Web\InitGuideVariants.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Web\InitGuideData.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Excel\UnionExcelVariants.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Transactions\Process.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Init\Initilization.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Init\InitAllSettings.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\ExceptionsFolder\BusinessExceptions.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\ExceptionsFolder\Exceptions.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\ExceptionsFolder\SystemException.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\ExceptionsFolder\TakeScreenshot.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Excel\UnionExcel.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Transactions\GetTransactionData.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Close\CloseAllApplications.ltw</string>
+        <string>C:\Users\user\Documents\Primo RPA\TestProject\Компоненты\Close\KillAllProcesses.ltw</string>
+    </LastOpenedItems>
+</LTProjectResources>
