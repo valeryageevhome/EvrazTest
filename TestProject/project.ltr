@@ -16,6 +16,10 @@
     <BreakpointLines />
     <Git />
     <LastOpenedItems>
-        <string>C:\Users\user\Documents\Primo RPA\TestProject\MainProcess.ltw</string>
+        <string>C:\Users\user\Desktop\EvrazTest-main\TestProject\MainProcess.ltw</string>
+        <string>C:\Users\user\Desktop\EvrazTest-main\TestProject\Компоненты\ExceptionsFolder\SystemException.ltw</string>
+        <string>C:\Users\user\Desktop\EvrazTest-main\TestProject\Компоненты\ExceptionsFolder\Exceptions.ltw</string>
+        <string>C:\Users\user\Desktop\EvrazTest-main\TestProject\Компоненты\Close\KillAllProcesses.ltw</string>
+        <string>C:\Users\user\Desktop\EvrazTest-main\TestProject\Компоненты\Web\Download.ltw</string>
     </LastOpenedItems>
 </LTProjectResources>

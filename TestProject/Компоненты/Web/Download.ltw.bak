@@ -456,15 +456,6 @@
                                     <Properties>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
-                                            <Name>ComponentName</Name>
-                                            <Value xsi:type="xsd:string">Развернуть окно</Value>
-                                        </SerializationItem>
-                                        <SerializationItem>
-                                            <IsListValue>false</IsListValue>
-                                            <Name>Annotation</Name>
-                                        </SerializationItem>
-                                        <SerializationItem>
-                                            <IsListValue>false</IsListValue>
                                             <Name>TimeOut</Name>
                                             <Value xsi:type="xsd:string">10000</Value>
                                         </SerializationItem>
@@ -474,11 +465,20 @@
                                         </SerializationItem>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
+                                            <Name>ComponentName</Name>
+                                            <Value xsi:type="xsd:string">Развернуть окно</Value>
+                                        </SerializationItem>
+                                        <SerializationItem>
+                                            <IsListValue>false</IsListValue>
                                             <Name>WaitBefore</Name>
                                         </SerializationItem>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
                                             <Name>WaitAfter</Name>
+                                        </SerializationItem>
+                                        <SerializationItem>
+                                            <IsListValue>false</IsListValue>
+                                            <Name>Annotation</Name>
                                         </SerializationItem>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
@@ -2302,7 +2302,7 @@ System.IO.File.Delete(downloadFile);</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentName</Name>
-                    <Value xsi:type="xsd:string">Принятие решения</Value>
+                    <Value xsi:type="xsd:string">Первый запуск?</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
