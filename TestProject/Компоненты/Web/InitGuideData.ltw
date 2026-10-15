@@ -515,11 +515,6 @@ flagSheets = sheetMark != null &amp;&amp; sheetMine != null;</Value>
                         <Properties>
                             <SerializationItem>
                                 <IsListValue>false</IsListValue>
-                                <Name>Equation</Name>
-                                <Value xsi:type="xsd:string">!flagSheets</Value>
-                            </SerializationItem>
-                            <SerializationItem>
-                                <IsListValue>false</IsListValue>
                                 <Name>Variables</Name>
                                 <Value xsi:type="ArrayOfScriptVariable" />
                             </SerializationItem>
@@ -532,6 +527,11 @@ flagSheets = sheetMark != null &amp;&amp; sheetMine != null;</Value>
                                 <IsListValue>false</IsListValue>
                                 <Name>IsElseCollapsed</Name>
                                 <Value xsi:type="xsd:boolean">true</Value>
+                            </SerializationItem>
+                            <SerializationItem>
+                                <IsListValue>false</IsListValue>
+                                <Name>Equation</Name>
+                                <Value xsi:type="xsd:string">!flagSheets</Value>
                             </SerializationItem>
                             <SerializationItem>
                                 <IsListValue>false</IsListValue>
@@ -1149,8 +1149,8 @@ flagSheets = sheetMark != null &amp;&amp; sheetMine != null;</Value>
                                 <Properties>
                                     <SerializationItem>
                                         <IsListValue>false</IsListValue>
-                                        <Name>VVariable</Name>
-                                        <Value xsi:type="xsd:string">row</Value>
+                                        <Name>Variables</Name>
+                                        <Value xsi:type="ArrayOfScriptVariable" />
                                     </SerializationItem>
                                     <SerializationItem>
                                         <IsListValue>false</IsListValue>
@@ -1159,12 +1159,12 @@ flagSheets = sheetMark != null &amp;&amp; sheetMine != null;</Value>
                                     </SerializationItem>
                                     <SerializationItem>
                                         <IsListValue>false</IsListValue>
-                                        <Name>Variables</Name>
-                                        <Value xsi:type="ArrayOfScriptVariable" />
+                                        <Name>Variable</Name>
                                     </SerializationItem>
                                     <SerializationItem>
                                         <IsListValue>false</IsListValue>
-                                        <Name>Variable</Name>
+                                        <Name>VVariable</Name>
+                                        <Value xsi:type="xsd:string">row</Value>
                                     </SerializationItem>
                                     <SerializationItem>
                                         <IsListValue>false</IsListValue>

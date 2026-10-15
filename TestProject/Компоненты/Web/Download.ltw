@@ -460,6 +460,15 @@
                                     <Properties>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
+                                            <Name>ComponentName</Name>
+                                            <Value xsi:type="xsd:string">Развернуть окно</Value>
+                                        </SerializationItem>
+                                        <SerializationItem>
+                                            <IsListValue>false</IsListValue>
+                                            <Name>Annotation</Name>
+                                        </SerializationItem>
+                                        <SerializationItem>
+                                            <IsListValue>false</IsListValue>
                                             <Name>TimeOut</Name>
                                             <Value xsi:type="xsd:string">10000</Value>
                                         </SerializationItem>
@@ -469,20 +478,11 @@
                                         </SerializationItem>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
-                                            <Name>ComponentName</Name>
-                                            <Value xsi:type="xsd:string">Развернуть окно</Value>
-                                        </SerializationItem>
-                                        <SerializationItem>
-                                            <IsListValue>false</IsListValue>
                                             <Name>WaitBefore</Name>
                                         </SerializationItem>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
                                             <Name>WaitAfter</Name>
-                                        </SerializationItem>
-                                        <SerializationItem>
-                                            <IsListValue>false</IsListValue>
-                                            <Name>Annotation</Name>
                                         </SerializationItem>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
@@ -1149,13 +1149,13 @@
                             <Properties>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
-                                    <Name>Equation</Name>
-                                    <Value xsi:type="xsd:string">!File.Exists(downloadFile)</Value>
+                                    <Name>Variables</Name>
+                                    <Value xsi:type="ArrayOfScriptVariable" />
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
-                                    <Name>Variables</Name>
-                                    <Value xsi:type="ArrayOfScriptVariable" />
+                                    <Name>Equation</Name>
+                                    <Value xsi:type="xsd:string">!File.Exists(downloadFile)</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
@@ -1320,11 +1320,6 @@
                                     <Properties>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
-                                            <Name>Equation</Name>
-                                            <Value xsi:type="xsd:string">counter &gt;= 12</Value>
-                                        </SerializationItem>
-                                        <SerializationItem>
-                                            <IsListValue>false</IsListValue>
                                             <Name>Variables</Name>
                                             <Value xsi:type="ArrayOfScriptVariable" />
                                         </SerializationItem>
@@ -1337,6 +1332,11 @@
                                             <IsListValue>false</IsListValue>
                                             <Name>IsElseCollapsed</Name>
                                             <Value xsi:type="xsd:boolean">true</Value>
+                                        </SerializationItem>
+                                        <SerializationItem>
+                                            <IsListValue>false</IsListValue>
+                                            <Name>Equation</Name>
+                                            <Value xsi:type="xsd:string">counter &gt;= 12</Value>
                                         </SerializationItem>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
@@ -1782,11 +1782,6 @@ downloadFile = System.IO.Directory
                             <Properties>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
-                                    <Name>Equation</Name>
-                                    <Value xsi:type="xsd:string">!String.IsNullOrEmpty(matchedFolder)</Value>
-                                </SerializationItem>
-                                <SerializationItem>
-                                    <IsListValue>false</IsListValue>
                                     <Name>Variables</Name>
                                     <Value xsi:type="ArrayOfScriptVariable" />
                                 </SerializationItem>
@@ -1799,6 +1794,11 @@ downloadFile = System.IO.Directory
                                     <IsListValue>false</IsListValue>
                                     <Name>IsElseCollapsed</Name>
                                     <Value xsi:type="xsd:boolean">false</Value>
+                                </SerializationItem>
+                                <SerializationItem>
+                                    <IsListValue>false</IsListValue>
+                                    <Name>Equation</Name>
+                                    <Value xsi:type="xsd:string">!String.IsNullOrEmpty(matchedFolder)</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>

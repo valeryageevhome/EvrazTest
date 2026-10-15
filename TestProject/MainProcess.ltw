@@ -32,12 +32,12 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">528</Value>
+                    <Value xsi:type="xsd:double">542.28571428571433</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">50</Value>
+                    <Value xsi:type="xsd:double">51.428571428571445</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -220,7 +220,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Equation</Name>
-                    <Value xsi:type="xsd:string">(transactionData != null) &amp;&amp; (transactionData.Count &gt; 0)</Value>
+                    <Value xsi:type="xsd:string">(transactionData != null) &amp;&amp; (transactionData?.Count &gt; 0)</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -234,7 +234,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">1336.25</Value>
+                    <Value xsi:type="xsd:double">1337.6785714285716</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -317,12 +317,12 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Width</Name>
-                    <Value xsi:type="xsd:double">311.03571428571422</Value>
+                    <Value xsi:type="xsd:double">357.94103174603157</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Height</Name>
-                    <Value xsi:type="xsd:double">413.044029786759</Value>
+                    <Value xsi:type="xsd:double">468.75831550104476</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -341,7 +341,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">426.76785714285722</Value>
+                    <Value xsi:type="xsd:double">403.31519841269869</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -538,12 +538,12 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">1354.083333333333</Value>
+                    <Value xsi:type="xsd:double">1348.3690476190475</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">736.62642857142873</Value>
+                    <Value xsi:type="xsd:double">986.09796727433172</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -723,12 +723,12 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">887.94714285714269</Value>
+                    <Value xsi:type="xsd:double">1006.5185714285715</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">1131.0294117647061</Value>
+                    <Value xsi:type="xsd:double">1221.6154583581874</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -816,17 +816,16 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">517.28571428571445</Value>
+                    <Value xsi:type="xsd:double">486.51071428571436</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">1920.9090909090905</Value>
+                    <Value xsi:type="xsd:double">1975.1948051948057</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q9="http://microsoft.com/wsdl/types/" xsi:type="q9:guid">5e06683c-e8a9-45eb-b940-ecc0f4b7af1e</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -849,7 +848,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q10="http://microsoft.com/wsdl/types/" xsi:type="q10:guid">b06aab90-8dad-436d-8de2-d0e4f95eef16</Value>
+                    <Value xmlns:q9="http://microsoft.com/wsdl/types/" xsi:type="q9:guid">b06aab90-8dad-436d-8de2-d0e4f95eef16</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -972,7 +971,7 @@
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q11="http://microsoft.com/wsdl/types/" xsi:type="q11:guid">1e776da0-af14-44a8-b191-24c5c1c6aa23</Value>
+                            <Value xmlns:q10="http://microsoft.com/wsdl/types/" xsi:type="q10:guid">1e776da0-af14-44a8-b191-24c5c1c6aa23</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -1041,17 +1040,17 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">496.73071428571433</Value>
+                    <Value xsi:type="xsd:double">472.917380952381</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">994.37915775052215</Value>
+                    <Value xsi:type="xsd:double">945.80772917909371</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q12="http://microsoft.com/wsdl/types/" xsi:type="q12:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
+                    <Value xmlns:q11="http://microsoft.com/wsdl/types/" xsi:type="q11:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1074,7 +1073,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q13="http://microsoft.com/wsdl/types/" xsi:type="q13:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
+                    <Value xmlns:q12="http://microsoft.com/wsdl/types/" xsi:type="q12:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1219,7 +1218,7 @@
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q14="http://microsoft.com/wsdl/types/" xsi:type="q14:guid">051932c3-1f1f-48a7-98a6-87a8e53b56dd</Value>
+                            <Value xmlns:q13="http://microsoft.com/wsdl/types/" xsi:type="q13:guid">051932c3-1f1f-48a7-98a6-87a8e53b56dd</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -1288,12 +1287,12 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">842.85714285714266</Value>
+                    <Value xsi:type="xsd:double">961.42857142857144</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">736.62642857142873</Value>
+                    <Value xsi:type="xsd:double">1000.9596339409984</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1320,7 +1319,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q15="http://microsoft.com/wsdl/types/" xsi:type="q15:guid">42984afc-ede8-4aac-8394-7fb97a86927a</Value>
+                    <Value xmlns:q14="http://microsoft.com/wsdl/types/" xsi:type="q14:guid">42984afc-ede8-4aac-8394-7fb97a86927a</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1458,7 +1457,7 @@
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q16="http://microsoft.com/wsdl/types/" xsi:type="q16:guid">b7c939ca-904c-4d7c-b3ba-805f1b46d745</Value>
+                            <Value xmlns:q15="http://microsoft.com/wsdl/types/" xsi:type="q15:guid">b7c939ca-904c-4d7c-b3ba-805f1b46d745</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -1527,17 +1526,17 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">482.445</Value>
+                    <Value xsi:type="xsd:double">464.817380952381</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">347.14285714285705</Value>
+                    <Value xsi:type="xsd:double">325.86619047619047</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q17="http://microsoft.com/wsdl/types/" xsi:type="q17:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
+                    <Value xmlns:q16="http://microsoft.com/wsdl/types/" xsi:type="q16:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1560,7 +1559,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q18="http://microsoft.com/wsdl/types/" xsi:type="q18:guid">ba3a3f28-a82a-4a13-8546-9627824d8c41</Value>
+                    <Value xmlns:q17="http://microsoft.com/wsdl/types/" xsi:type="q17:guid">ba3a3f28-a82a-4a13-8546-9627824d8c41</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1683,7 +1682,7 @@
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q19="http://microsoft.com/wsdl/types/" xsi:type="q19:guid">efd9451a-63e3-44f6-84d6-da9b905ba145</Value>
+                            <Value xmlns:q18="http://microsoft.com/wsdl/types/" xsi:type="q18:guid">efd9451a-63e3-44f6-84d6-da9b905ba145</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -1815,7 +1814,7 @@
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q20="http://microsoft.com/wsdl/types/" xsi:type="q20:guid">f162aceb-9f45-4b86-af48-d2560a038045</Value>
+                            <Value xmlns:q19="http://microsoft.com/wsdl/types/" xsi:type="q19:guid">f162aceb-9f45-4b86-af48-d2560a038045</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -1961,7 +1960,7 @@
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q21="http://microsoft.com/wsdl/types/" xsi:type="q21:guid">b0fa5b45-90f0-42a1-8769-98bec1816c13</Value>
+                            <Value xmlns:q20="http://microsoft.com/wsdl/types/" xsi:type="q20:guid">b0fa5b45-90f0-42a1-8769-98bec1816c13</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2077,7 +2076,7 @@ if (System.IO.File.Exists(prefPath))
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q22="http://microsoft.com/wsdl/types/" xsi:type="q22:guid">2781da58-774c-47c0-a370-88ce6de1817c</Value>
+                            <Value xmlns:q21="http://microsoft.com/wsdl/types/" xsi:type="q21:guid">2781da58-774c-47c0-a370-88ce6de1817c</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2146,17 +2145,17 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">517.28571428571445</Value>
+                    <Value xsi:type="xsd:double">466.207380952381</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">1151.0294117647061</Value>
+                    <Value xsi:type="xsd:double">1148.172268907563</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q23="http://microsoft.com/wsdl/types/" xsi:type="q23:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
+                    <Value xmlns:q22="http://microsoft.com/wsdl/types/" xsi:type="q22:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2179,7 +2178,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q24="http://microsoft.com/wsdl/types/" xsi:type="q24:guid">32b118b4-614a-40ff-b630-6d5cb5a25c3f</Value>
+                    <Value xmlns:q23="http://microsoft.com/wsdl/types/" xsi:type="q23:guid">32b118b4-614a-40ff-b630-6d5cb5a25c3f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2331,7 +2330,7 @@ if (System.IO.File.Exists(prefPath))
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q25="http://microsoft.com/wsdl/types/" xsi:type="q25:guid">6c35805d-b1e6-4d84-a1f8-39ed0f2f8174</Value>
+                            <Value xmlns:q24="http://microsoft.com/wsdl/types/" xsi:type="q24:guid">6c35805d-b1e6-4d84-a1f8-39ed0f2f8174</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2402,7 +2401,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">481.09904761904772</Value>
+                    <Value xsi:type="xsd:double">457.28571428571433</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2412,7 +2411,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q26="http://microsoft.com/wsdl/types/" xsi:type="q26:guid">1a452347-f070-4244-a762-99ed5b88c495</Value>
+                    <Value xmlns:q25="http://microsoft.com/wsdl/types/" xsi:type="q25:guid">1a452347-f070-4244-a762-99ed5b88c495</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2435,7 +2434,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q27="http://microsoft.com/wsdl/types/" xsi:type="q27:guid">8bb45d79-0fae-4112-bb24-e11a1687b4fa</Value>
+                    <Value xmlns:q26="http://microsoft.com/wsdl/types/" xsi:type="q26:guid">8bb45d79-0fae-4112-bb24-e11a1687b4fa</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2587,7 +2586,7 @@ if (System.IO.File.Exists(prefPath))
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q28="http://microsoft.com/wsdl/types/" xsi:type="q28:guid">dbb727de-e6c2-4a41-a819-a6de73ec7402</Value>
+                            <Value xmlns:q27="http://microsoft.com/wsdl/types/" xsi:type="q27:guid">dbb727de-e6c2-4a41-a819-a6de73ec7402</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2635,114 +2634,6 @@ if (System.IO.File.Exists(prefPath))
                 </SerializationComponent>
             </Components>
         </SerializationComponent>
-        <SerializationComponent>
-            <ClassName>LTools.Workflow.Elements.Workflow.WFWorkflowTryCatch</ClassName>
-            <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
-            <Properties>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ComponentName</Name>
-                    <Value xsi:type="xsd:string">Try-Catch в диаграмме</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Annotation</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Width</Name>
-                    <Value xsi:type="xsd:double">311.03571428571422</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Height</Name>
-                    <Value xsi:type="xsd:double">116</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Exc</Name>
-                    <Value xsi:type="xsd:string">exception</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>SSExc</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>TextTag</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>X</Name>
-                    <Value xsi:type="xsd:double">450.58119047619061</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Y</Name>
-                    <Value xsi:type="xsd:double">1896</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ExceptionHandlerId</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>WaitBefore</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>WaitAfter</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ComponentID</Name>
-                    <Value xmlns:q29="http://microsoft.com/wsdl/types/" xsi:type="q29:guid">5e06683c-e8a9-45eb-b940-ecc0f4b7af1e</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ContinueOnException</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>PreventLogging</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>SSSuccess</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>SSFail</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>true</IsListValue>
-                    <Name>NoCodeProperties</Name>
-                    <ListValue />
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>NoCodeUsed</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>IsCollapsed</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ShowAnnotation</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-            </Properties>
-            <IsBreakpoint>false</IsBreakpoint>
-            <IsIgnore>false</IsIgnore>
-        </SerializationComponent>
         <SerializationComponent xsi:type="SerializationContainer">
             <ClassName>LTools.Workflow.Elements.Workflow.WFWorkflowPath</ClassName>
             <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
@@ -2763,7 +2654,7 @@ if (System.IO.File.Exists(prefPath))
                             <IsListValue>false</IsListValue>
                             <Name>PointsList</Name>
                             <Value xsi:type="Point">
-                                <X>1479.083333333333</X>
+                                <X>1473.3690476190475</X>
                                 <Y>1715.0707070707072</Y>
                             </Value>
                         </SerializationItem>
@@ -2787,12 +2678,12 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q30="http://microsoft.com/wsdl/types/" xsi:type="q30:guid">1a452347-f070-4244-a762-99ed5b88c495</Value>
+                    <Value xmlns:q28="http://microsoft.com/wsdl/types/" xsi:type="q28:guid">1a452347-f070-4244-a762-99ed5b88c495</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q31="http://microsoft.com/wsdl/types/" xsi:type="q31:guid">6294d421-beb1-42ec-89be-a68f0666b5f3</Value>
+                    <Value xmlns:q29="http://microsoft.com/wsdl/types/" xsi:type="q29:guid">6294d421-beb1-42ec-89be-a68f0666b5f3</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2817,6 +2708,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
+                    <Value xmlns:q30="http://microsoft.com/wsdl/types/" xsi:type="q30:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2848,7 +2740,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q32="http://microsoft.com/wsdl/types/" xsi:type="q32:guid">4b92772b-52e0-4d87-8225-249007465304</Value>
+                    <Value xmlns:q31="http://microsoft.com/wsdl/types/" xsi:type="q31:guid">4b92772b-52e0-4d87-8225-249007465304</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2910,24 +2802,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>true</IsListValue>
                     <Name>PointsList</Name>
-                    <ListValue>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>568</X>
-                                <Y>220</Y>
-                            </Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>599.9133333333333</X>
-                                <Y>220</Y>
-                            </Value>
-                        </SerializationItem>
-                    </ListValue>
+                    <ListValue />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2947,12 +2822,12 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q33="http://microsoft.com/wsdl/types/" xsi:type="q33:guid">f40befc5-6b1f-4072-85b1-5915472e5b24</Value>
+                    <Value xmlns:q32="http://microsoft.com/wsdl/types/" xsi:type="q32:guid">f40befc5-6b1f-4072-85b1-5915472e5b24</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q34="http://microsoft.com/wsdl/types/" xsi:type="q34:guid">ba3a3f28-a82a-4a13-8546-9627824d8c41</Value>
+                    <Value xmlns:q33="http://microsoft.com/wsdl/types/" xsi:type="q33:guid">ba3a3f28-a82a-4a13-8546-9627824d8c41</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2977,7 +2852,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q35="http://microsoft.com/wsdl/types/" xsi:type="q35:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
+                    <Value xmlns:q34="http://microsoft.com/wsdl/types/" xsi:type="q34:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3009,7 +2884,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q36="http://microsoft.com/wsdl/types/" xsi:type="q36:guid">28626926-7941-41d3-b915-25881f89a9be</Value>
+                    <Value xmlns:q35="http://microsoft.com/wsdl/types/" xsi:type="q35:guid">28626926-7941-41d3-b915-25881f89a9be</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3078,7 +2953,7 @@ if (System.IO.File.Exists(prefPath))
                             <Name>PointsList</Name>
                             <Value xsi:type="Point">
                                 <X>410</X>
-                                <Y>1371.25</Y>
+                                <Y>1372.6785714285716</Y>
                             </Value>
                         </SerializationItem>
                         <SerializationItem>
@@ -3086,7 +2961,7 @@ if (System.IO.File.Exists(prefPath))
                             <Name>PointsList</Name>
                             <Value xsi:type="Point">
                                 <X>410</X>
-                                <Y>1050.6558244171888</Y>
+                                <Y>1002.0843958457604</Y>
                             </Value>
                         </SerializationItem>
                     </ListValue>
@@ -3109,12 +2984,12 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q37="http://microsoft.com/wsdl/types/" xsi:type="q37:guid">a6035751-5793-43cb-a23f-953b3e5f4464</Value>
+                    <Value xmlns:q36="http://microsoft.com/wsdl/types/" xsi:type="q36:guid">a6035751-5793-43cb-a23f-953b3e5f4464</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q38="http://microsoft.com/wsdl/types/" xsi:type="q38:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
+                    <Value xmlns:q37="http://microsoft.com/wsdl/types/" xsi:type="q37:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3139,7 +3014,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q39="http://microsoft.com/wsdl/types/" xsi:type="q39:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
+                    <Value xmlns:q38="http://microsoft.com/wsdl/types/" xsi:type="q38:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3171,7 +3046,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q40="http://microsoft.com/wsdl/types/" xsi:type="q40:guid">5d6ba61b-9a46-442f-82ae-4120138f1a1e</Value>
+                    <Value xmlns:q39="http://microsoft.com/wsdl/types/" xsi:type="q39:guid">5d6ba61b-9a46-442f-82ae-4120138f1a1e</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3233,24 +3108,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>true</IsListValue>
                     <Name>PointsList</Name>
-                    <ListValue>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>606.09904761904772</X>
-                                <Y>1134</Y>
-                            </Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>633.36404761904782</X>
-                                <Y>1134</Y>
-                            </Value>
-                        </SerializationItem>
-                    </ListValue>
+                    <ListValue />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3270,12 +3128,12 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q41="http://microsoft.com/wsdl/types/" xsi:type="q41:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
+                    <Value xmlns:q40="http://microsoft.com/wsdl/types/" xsi:type="q40:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q42="http://microsoft.com/wsdl/types/" xsi:type="q42:guid">32b118b4-614a-40ff-b630-6d5cb5a25c3f</Value>
+                    <Value xmlns:q41="http://microsoft.com/wsdl/types/" xsi:type="q41:guid">32b118b4-614a-40ff-b630-6d5cb5a25c3f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3300,7 +3158,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q43="http://microsoft.com/wsdl/types/" xsi:type="q43:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
+                    <Value xmlns:q42="http://microsoft.com/wsdl/types/" xsi:type="q42:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3332,7 +3190,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q44="http://microsoft.com/wsdl/types/" xsi:type="q44:guid">3670ad44-329e-45cc-876c-aa3173a2a367</Value>
+                    <Value xmlns:q43="http://microsoft.com/wsdl/types/" xsi:type="q43:guid">3670ad44-329e-45cc-876c-aa3173a2a367</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3394,24 +3252,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>true</IsListValue>
                     <Name>PointsList</Name>
-                    <ListValue>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>633.36404761904782</X>
-                                <Y>1319</Y>
-                            </Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>582.28571428571433</X>
-                                <Y>1319</Y>
-                            </Value>
-                        </SerializationItem>
-                    </ListValue>
+                    <ListValue />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3431,12 +3272,12 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q45="http://microsoft.com/wsdl/types/" xsi:type="q45:guid">32b118b4-614a-40ff-b630-6d5cb5a25c3f</Value>
+                    <Value xmlns:q44="http://microsoft.com/wsdl/types/" xsi:type="q44:guid">32b118b4-614a-40ff-b630-6d5cb5a25c3f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q46="http://microsoft.com/wsdl/types/" xsi:type="q46:guid">a6035751-5793-43cb-a23f-953b3e5f4464</Value>
+                    <Value xmlns:q45="http://microsoft.com/wsdl/types/" xsi:type="q45:guid">a6035751-5793-43cb-a23f-953b3e5f4464</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3461,6 +3302,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
+                    <Value xmlns:q46="http://microsoft.com/wsdl/types/" xsi:type="q46:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3554,24 +3396,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>true</IsListValue>
                     <Name>PointsList</Name>
-                    <ListValue>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>599.9133333333333</X>
-                                <Y>806</Y>
-                            </Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>606.09904761904772</X>
-                                <Y>806</Y>
-                            </Value>
-                        </SerializationItem>
-                    </ListValue>
+                    <ListValue />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3715,24 +3540,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>true</IsListValue>
                     <Name>PointsList</Name>
-                    <ListValue>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>606.09904761904772</X>
-                                <Y>1904</Y>
-                            </Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>613.06071428571443</X>
-                                <Y>1904</Y>
-                            </Value>
-                        </SerializationItem>
-                    </ListValue>
+                    <ListValue />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3882,8 +3690,8 @@ if (System.IO.File.Exists(prefPath))
                             <IsListValue>false</IsListValue>
                             <Name>PointsList</Name>
                             <Value xsi:type="Point">
-                                <X>952.94714285714269</X>
-                                <Y>1371.25</Y>
+                                <X>1071.5185714285715</X>
+                                <Y>1372.6785714285716</Y>
                             </Value>
                         </SerializationItem>
                     </ListValue>
@@ -4030,24 +3838,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>true</IsListValue>
                     <Name>PointsList</Name>
-                    <ListValue>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>582.28571428571433</X>
-                                <Y>1533</Y>
-                            </Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>606.09904761904772</X>
-                                <Y>1533</Y>
-                            </Value>
-                        </SerializationItem>
-                    </ListValue>
+                    <ListValue />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -4197,8 +3988,8 @@ if (System.IO.File.Exists(prefPath))
                             <IsListValue>false</IsListValue>
                             <Name>PointsList</Name>
                             <Value xsi:type="Point">
-                                <X>952.94714285714269</X>
-                                <Y>1969.0474242424239</Y>
+                                <X>1071.5185714285715</X>
+                                <Y>2023.333138528139</Y>
                             </Value>
                         </SerializationItem>
                     </ListValue>
@@ -4345,24 +4136,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>true</IsListValue>
                     <Name>PointsList</Name>
-                    <ListValue>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>1080</X>
-                                <Y>807.764761904762</Y>
-                            </Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>1080</X>
-                                <Y>792.90309523809537</Y>
-                            </Value>
-                        </SerializationItem>
-                    </ListValue>
+                    <ListValue />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -4510,7 +4284,7 @@ if (System.IO.File.Exists(prefPath))
                             <IsListValue>false</IsListValue>
                             <Name>PointsList</Name>
                             <Value xsi:type="Point">
-                                <X>1479.083333333333</X>
+                                <X>1473.3690476190475</X>
                                 <Y>382.14285714285711</Y>
                             </Value>
                         </SerializationItem>
@@ -4658,24 +4432,7 @@ if (System.IO.File.Exists(prefPath))
                 <SerializationItem>
                     <IsListValue>true</IsListValue>
                     <Name>PointsList</Name>
-                    <ListValue>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>826</X>
-                                <Y>1029.3791577505222</Y>
-                            </Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>826</X>
-                                <Y>792.90309523809537</Y>
-                            </Value>
-                        </SerializationItem>
-                    </ListValue>
+                    <ListValue />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
