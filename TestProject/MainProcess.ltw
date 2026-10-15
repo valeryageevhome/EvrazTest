@@ -2304,6 +2304,13 @@ if (System.IO.File.Exists(prefPath))
                                     <DataTypeString>System.Collections.Generic.List&lt;System.String&gt;</DataTypeString>
                                     <Direction>IN</Direction>
                                 </ScriptVariable>
+                                <ScriptVariable>
+                                    <Name>flagStart</Name>
+                                    <Group />
+                                    <DefaultValue xsi:type="xsd:string">(transactionData.Count + 1) == guideMine.Count</DefaultValue>
+                                    <DataTypeString>System.Boolean</DataTypeString>
+                                    <Direction>IN</Direction>
+                                </ScriptVariable>
                             </Value>
                         </SerializationItem>
                         <SerializationItem>

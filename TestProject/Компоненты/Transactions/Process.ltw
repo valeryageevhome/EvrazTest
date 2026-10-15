@@ -12,6 +12,16 @@
         <Properties>
             <SerializationItem>
                 <IsListValue>false</IsListValue>
+                <Name>ComponentName</Name>
+                <Value xsi:type="xsd:string">Процесс</Value>
+            </SerializationItem>
+            <SerializationItem>
+                <IsListValue>false</IsListValue>
+                <Name>Annotation</Name>
+                <Value xsi:type="xsd:string">Вызывает основные шаги бизнес-процесса, которые обычно реализуются несколькими подрабочими процессами.</Value>
+            </SerializationItem>
+            <SerializationItem>
+                <IsListValue>false</IsListValue>
                 <Name>TextTag</Name>
             </SerializationItem>
             <SerializationItem>
@@ -21,21 +31,11 @@
             </SerializationItem>
             <SerializationItem>
                 <IsListValue>false</IsListValue>
-                <Name>ComponentName</Name>
-                <Value xsi:type="xsd:string">Процесс</Value>
-            </SerializationItem>
-            <SerializationItem>
-                <IsListValue>false</IsListValue>
                 <Name>WaitBefore</Name>
             </SerializationItem>
             <SerializationItem>
                 <IsListValue>false</IsListValue>
                 <Name>WaitAfter</Name>
-            </SerializationItem>
-            <SerializationItem>
-                <IsListValue>false</IsListValue>
-                <Name>Annotation</Name>
-                <Value xsi:type="xsd:string">Вызывает основные шаги бизнес-процесса, которые обычно реализуются несколькими подрабочими процессами.</Value>
             </SerializationItem>
             <SerializationItem>
                 <IsListValue>false</IsListValue>
@@ -243,6 +243,13 @@
                                 <DataTypeString>System.Collections.Generic.KeyValuePair&lt;System.String, System.String&gt;</DataTypeString>
                                 <Direction>IN</Direction>
                             </ScriptVariable>
+                            <ScriptVariable>
+                                <Name>flagStart</Name>
+                                <Group />
+                                <DefaultValue xsi:type="xsd:string">flagStart</DefaultValue>
+                                <DataTypeString>System.Boolean</DataTypeString>
+                                <Direction>IN</Direction>
+                            </ScriptVariable>
                         </Value>
                     </SerializationItem>
                     <SerializationItem>
@@ -342,6 +349,12 @@
             <Name>guideMark</Name>
             <Group />
             <DataTypeString>List&lt;String&gt;</DataTypeString>
+            <Direction>IN</Direction>
+        </ScriptVariable>
+        <ScriptVariable>
+            <Name>flagStart</Name>
+            <Group />
+            <DataTypeString>Boolean</DataTypeString>
             <Direction>IN</Direction>
         </ScriptVariable>
     </Arguments>

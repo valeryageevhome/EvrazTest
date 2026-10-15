@@ -106,6 +106,15 @@
             <Properties>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
+                    <Name>ComponentName</Name>
+                    <Value xsi:type="xsd:string">Try-Catch в диаграмме</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Annotation</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
                     <Name>Width</Name>
                     <Value xsi:type="xsd:double">404.84634920634903</Value>
                 </SerializationItem>
@@ -144,20 +153,11 @@
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
-                    <Name>ComponentName</Name>
-                    <Value xsi:type="xsd:string">Try-Catch в диаграмме</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
                     <Name>WaitBefore</Name>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>WaitAfter</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Annotation</Name>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -220,7 +220,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Equation</Name>
-                    <Value xsi:type="xsd:string">(transactionData != null) &amp;&amp; (transactionData.Count &gt; 0)</Value>
+                    <Value xsi:type="xsd:string">(transactionData != null) &amp;&amp; (transactionData?.Count &gt; 0)</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -307,6 +307,15 @@
             <Properties>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
+                    <Name>ComponentName</Name>
+                    <Value xsi:type="xsd:string">Try-Catch в диаграмме</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Annotation</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
                     <Name>Width</Name>
                     <Value xsi:type="xsd:double">357.94103174603157</Value>
                 </SerializationItem>
@@ -345,20 +354,11 @@
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
-                    <Name>ComponentName</Name>
-                    <Value xsi:type="xsd:string">Try-Catch в диаграмме</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
                     <Name>WaitBefore</Name>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>WaitAfter</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Annotation</Name>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -415,6 +415,15 @@
             <Properties>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
+                    <Name>ComponentName</Name>
+                    <Value xsi:type="xsd:string">Try-Catch в диаграмме</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Annotation</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
                     <Name>Width</Name>
                     <Value xsi:type="xsd:double">311.03571428571422</Value>
                 </SerializationItem>
@@ -453,20 +462,11 @@
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
-                    <Name>ComponentName</Name>
-                    <Value xsi:type="xsd:string">Try-Catch в диаграмме</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
                     <Name>WaitBefore</Name>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>WaitAfter</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Annotation</Name>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2302,6 +2302,13 @@ if (System.IO.File.Exists(prefPath))
                                     <Group />
                                     <DefaultValue xsi:type="xsd:string">guideMark</DefaultValue>
                                     <DataTypeString>System.Collections.Generic.List&lt;System.String&gt;</DataTypeString>
+                                    <Direction>IN</Direction>
+                                </ScriptVariable>
+                                <ScriptVariable>
+                                    <Name>flagStart</Name>
+                                    <Group />
+                                    <DefaultValue xsi:type="xsd:string">(transactionData.Count + 1) == guideMine.Count</DefaultValue>
+                                    <DataTypeString>System.Boolean</DataTypeString>
                                     <Direction>IN</Direction>
                                 </ScriptVariable>
                             </Value>
