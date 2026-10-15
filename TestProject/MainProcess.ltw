@@ -2040,6 +2040,10 @@ if (System.IO.File.Exists(prefPath))
     json["download"]["directory_upgrade"] = true;
 
     System.IO.File.WriteAllText(prefPath, json.ToString());
+}
+else
+{
+	throw new Exception("Не найден Preferences файл браузера Chrome: неправильный путь (${prefPath})");
 }</Value>
                         </SerializationItem>
                         <SerializationItem>
