@@ -16,10 +16,11 @@
     <BreakpointLines />
     <Git />
     <LastOpenedItems>
-        <string>C:\Users\user\Desktop\EvrazTest-main\TestProject\MainProcess.ltw</string>
-        <string>C:\Users\user\Desktop\EvrazTest-main\TestProject\Компоненты\ExceptionsFolder\SystemException.ltw</string>
-        <string>C:\Users\user\Desktop\EvrazTest-main\TestProject\Компоненты\ExceptionsFolder\Exceptions.ltw</string>
-        <string>C:\Users\user\Desktop\EvrazTest-main\TestProject\Компоненты\Close\KillAllProcesses.ltw</string>
-        <string>C:\Users\user\Desktop\EvrazTest-main\TestProject\Компоненты\Web\Download.ltw</string>
+        <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\MainProcess.ltw</string>
+        <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\Transactions\GetTransactionData.ltw</string>
+        <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\ExceptionsFolder\Exceptions.ltw</string>
+        <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\Excel\UnionExcelVariants.ltw</string>
+        <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\ExceptionsFolder\TakeScreenshot.ltw</string>
+        <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\ExceptionsFolder\SystemException.ltw</string>
     </LastOpenedItems>
 </LTProjectResources>

@@ -2097,6 +2097,7 @@ ORDER BY TRIM([Марка])";</Value>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>Message</Name>
+                                    <Value xsi:type="xsd:string">$"Не сработал SQL-запрос по пути {reportPath}"</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
@@ -2190,6 +2191,15 @@ ORDER BY TRIM([Марка])";</Value>
                             <Properties>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
+                                    <Name>ComponentName</Name>
+                                    <Value xsi:type="xsd:string">Отсоединиться от БД</Value>
+                                </SerializationItem>
+                                <SerializationItem>
+                                    <IsListValue>false</IsListValue>
+                                    <Name>Annotation</Name>
+                                </SerializationItem>
+                                <SerializationItem>
+                                    <IsListValue>false</IsListValue>
                                     <Name>ODB</Name>
                                     <Value xsi:type="xsd:string">dbInstant</Value>
                                 </SerializationItem>
@@ -2200,20 +2210,11 @@ ORDER BY TRIM([Марка])";</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
-                                    <Name>ComponentName</Name>
-                                    <Value xsi:type="xsd:string">Отсоединиться от БД</Value>
-                                </SerializationItem>
-                                <SerializationItem>
-                                    <IsListValue>false</IsListValue>
                                     <Name>WaitBefore</Name>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>WaitAfter</Name>
-                                </SerializationItem>
-                                <SerializationItem>
-                                    <IsListValue>false</IsListValue>
-                                    <Name>Annotation</Name>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
