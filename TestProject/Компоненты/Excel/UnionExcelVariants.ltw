@@ -1316,18 +1316,6 @@ flagHeaders = cols.Any(c =&gt; Regex.Replace((c.ColumnName ?? "").ToLower().Repl
                     <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
                     <Properties>
                         <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>ComponentName</Name>
-                            <Value xsi:type="xsd:string">Подготовка к SQL-запросу</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>Annotation</Name>
-                            <Value xsi:type="xsd:string">1. Аргументы для sql-запроса
-2. Строка подключения
-3. Страница эксель-файла, который будет финальным</Value>
-                        </SerializationItem>
-                        <SerializationItem>
                             <IsListValue>true</IsListValue>
                             <Name>Items</Name>
                             <ListValue>
@@ -1388,11 +1376,23 @@ flagHeaders = cols.Any(c =&gt; Regex.Replace((c.ColumnName ?? "").ToLower().Repl
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
+                            <Name>ComponentName</Name>
+                            <Value xsi:type="xsd:string">Подготовка к SQL-запросу</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
                             <Name>WaitBefore</Name>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>WaitAfter</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>Annotation</Name>
+                            <Value xsi:type="xsd:string">1. Аргументы для sql-запроса
+2. Строка подключения
+3. Страница эксель-файла, который будет финальным</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2191,15 +2191,6 @@ ORDER BY TRIM([Марка])";</Value>
                             <Properties>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
-                                    <Name>ComponentName</Name>
-                                    <Value xsi:type="xsd:string">Отсоединиться от БД</Value>
-                                </SerializationItem>
-                                <SerializationItem>
-                                    <IsListValue>false</IsListValue>
-                                    <Name>Annotation</Name>
-                                </SerializationItem>
-                                <SerializationItem>
-                                    <IsListValue>false</IsListValue>
                                     <Name>ODB</Name>
                                     <Value xsi:type="xsd:string">dbInstant</Value>
                                 </SerializationItem>
@@ -2210,11 +2201,20 @@ ORDER BY TRIM([Марка])";</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
+                                    <Name>ComponentName</Name>
+                                    <Value xsi:type="xsd:string">Отсоединиться от БД</Value>
+                                </SerializationItem>
+                                <SerializationItem>
+                                    <IsListValue>false</IsListValue>
                                     <Name>WaitBefore</Name>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>WaitAfter</Name>
+                                </SerializationItem>
+                                <SerializationItem>
+                                    <IsListValue>false</IsListValue>
+                                    <Name>Annotation</Name>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>

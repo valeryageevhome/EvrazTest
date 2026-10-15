@@ -22,5 +22,9 @@
         <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\Excel\UnionExcelVariants.ltw</string>
         <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\ExceptionsFolder\TakeScreenshot.ltw</string>
         <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\ExceptionsFolder\SystemException.ltw</string>
+        <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\Excel\UnionExcel.ltw</string>
+        <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\Close\KillAllProcesses.ltw</string>
+        <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\Web\Download.ltw</string>
+        <string>C:\Users\user\Desktop\Работа\EvrazTest\TestProject\Компоненты\Close\CloseAllApplications.ltw</string>
     </LastOpenedItems>
 </LTProjectResources>

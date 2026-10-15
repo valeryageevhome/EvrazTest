@@ -770,7 +770,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Equation</Name>
-                    <Value xsi:type="xsd:string">guideMine.Count == 0</Value>
+                    <Value xsi:type="xsd:string">guideMine?.Count == 0</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>

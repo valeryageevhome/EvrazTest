@@ -695,7 +695,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">232.30769230769232</Value>
+                    <Value xsi:type="xsd:double">248.30769230769232</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1293,7 +1293,9 @@
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>Script</Name>
-                            <Value xsi:type="xsd:string">if(!Directory.Exists(pathException))
+                            <Value xsi:type="xsd:string">pathException = pathException ?? "Ошибки";
+
+if(!Directory.Exists(pathException))
 {
 	Directory.CreateDirectory(pathException);
 }</Value>

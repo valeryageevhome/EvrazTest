@@ -2017,7 +2017,7 @@
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>Script</Name>
-                            <Value xsi:type="xsd:string">string targetFolder = Config["downloadsChromePath"].ToString().Trim() ?? @"C:\RPA_Downloads"; // Путь из переменной
+                            <Value xsi:type="xsd:string">targetFolder = Config["downloadsChromePath"].ToString().Trim() ?? @"C:\RPA_Downloads"; // Путь из переменной
 string prefPath = "";
 
 string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
@@ -2238,6 +2238,20 @@ if (System.IO.File.Exists(prefPath))
             <Properties>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
+                    <Name>ComponentName</Name>
+                    <Value xsi:type="xsd:string">Excel-блок</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Annotation</Name>
+                    <Value xsi:type="xsd:string">1) Работа над блоком с Excel, группировка данных и создание единого файла
+
+2) Форматирование файла для удобного просмотра
+
+3) Не вошла в транзакции, так как нужно сделать все сразу, иначе неправильно будет считать</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
                     <Name>TextTag</Name>
                 </SerializationItem>
                 <SerializationItem>
@@ -2257,25 +2271,11 @@ if (System.IO.File.Exists(prefPath))
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
-                    <Name>ComponentName</Name>
-                    <Value xsi:type="xsd:string">Excel-блок</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
                     <Name>WaitBefore</Name>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>WaitAfter</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Annotation</Name>
-                    <Value xsi:type="xsd:string">1) Работа над блоком с Excel, группировка данных и создание единого файла
-
-2) Форматирование файла для удобного просмотра
-
-3) Не вошла в транзакции, так как нужно сделать все сразу, иначе неправильно будет считать</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3567,6 +3567,13 @@ if (System.IO.File.Exists(prefPath))
                                     <Group />
                                     <DefaultValue xsi:type="xsd:string">(transactionData.Count + 1) == guideMark.Count</DefaultValue>
                                     <DataTypeString>System.Boolean</DataTypeString>
+                                    <Direction>IN</Direction>
+                                </ScriptVariable>
+                                <ScriptVariable>
+                                    <Name>downloadPath</Name>
+                                    <Group />
+                                    <DefaultValue xsi:type="xsd:string">targetFolder</DefaultValue>
+                                    <DataTypeString>System.String</DataTypeString>
                                     <Direction>IN</Direction>
                                 </ScriptVariable>
                             </Value>
@@ -5916,6 +5923,12 @@ if (System.IO.File.Exists(prefPath))
             <DefaultValue xsi:type="xsd:string">false</DefaultValue>
             <Comment>Флаг окончания работы процесса</Comment>
             <DataTypeString>Boolean</DataTypeString>
+            <Direction>IN_OUT</Direction>
+        </ScriptVariable>
+        <ScriptVariable>
+            <Name>targetFolder</Name>
+            <Group />
+            <DataTypeString>System.String</DataTypeString>
             <Direction>IN_OUT</Direction>
         </ScriptVariable>
     </GlobalVariables>
