@@ -2586,7 +2586,7 @@ if(!Directory.Exists(pathException))
             <Name>exception</Name>
             <Group />
             <DataTypeString>LTools.Common.Model.ExecutionExceptionInfo</DataTypeString>
-            <Direction>IN</Direction>
+            <Direction>IN_OUT</Direction>
         </ScriptVariable>
         <ScriptVariable>
             <Name>pathException</Name>
