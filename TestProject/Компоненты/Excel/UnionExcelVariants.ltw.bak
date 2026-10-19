@@ -3484,6 +3484,12 @@ if (groupedRows.Count &gt; 0)
             <DataTypeString>System.String</DataTypeString>
             <Direction>IN_OUT</Direction>
         </ScriptVariable>
+        <ScriptVariable>
+            <Name>reportPath</Name>
+            <Group />
+            <DataTypeString>System.String</DataTypeString>
+            <Direction>IN_OUT</Direction>
+        </ScriptVariable>
     </GlobalVariables>
     <Arguments>
         <ScriptVariable>
@@ -3491,12 +3497,6 @@ if (groupedRows.Count &gt; 0)
             <Group />
             <DataTypeString>String</DataTypeString>
             <Direction>IN</Direction>
-        </ScriptVariable>
-        <ScriptVariable>
-            <Name>reportPath</Name>
-            <Group />
-            <DataTypeString>String</DataTypeString>
-            <Direction>OUT</Direction>
         </ScriptVariable>
         <ScriptVariable>
             <Name>mine</Name>

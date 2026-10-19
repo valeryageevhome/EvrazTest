@@ -1,0 +1,52 @@
+﻿{
+  "manifest_version": 3,
+  "name": "Primo RPA Extension",
+  "version": "3.87",
+  "description": "Primo RPA browser extension",
+  "author": "Primo",
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "icons": {
+    "16": "main_big.png",
+    "48": "main_big.png",
+    "128": "main_big.png"
+  },
+  "background": {
+    "service_worker": "worker.js",
+    "type": "module"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "file://*/*"
+      ],
+      "js": [
+        "find.js",
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "type": "module",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_title": "Primo RPA Interop Extension v3.87",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "nativeMessaging",
+    "webNavigation",
+    "userScripts",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsUZ82uy2VGhDMHdYRSAc5Bj/wfqgjmoaydLIsmQlRQrMABZG1ot2SDsIyXe02dJHNubYLpUpa/pOixk7HDAiKO18fOPwdBWtDP1ggtgavB+wlUeObZwtjx2IMIr2EztV0Nqa2VQMArpz3yEfVpP32kNrsDBEktgwBmcZe4JozKJYNODtXh69xawOcWw2kG/BJr0ZUP/nXLuDdD2hBe8Sao1klVkTjy65/kI6hw8NVrcSCbiBH0HN1wwH6wiG8YL/QLtMETilBlfR+9todW3PidiMrxm6xB5WwRiGFiMJbNetXz3KUpPMwOXDfIOxXZ34xXvsLf8viRCeQc5LrvNdWwIDAQAB"
+}

@@ -253,7 +253,7 @@
                                 <ScriptVariable>
                                     <Name>pathExceptions</Name>
                                     <Group />
-                                    <DefaultValue xsi:type="xsd:string">pathException</DefaultValue>
+                                    <DefaultValue xsi:type="xsd:string">systemFolder</DefaultValue>
                                     <DataTypeString>System.String</DataTypeString>
                                     <Direction>IN</Direction>
                                 </ScriptVariable>
@@ -350,7 +350,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Equation</Name>
-                    <Value xsi:type="xsd:string">exception.ExceptionType.ToString() == "General"</Value>
+                    <Value xsi:type="xsd:string">exception.ExceptionType.ToString() == "General" || exception.ExceptionType.ToString() == "System"</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -584,7 +584,7 @@
                                 <ScriptVariable>
                                     <Name>pathExceptions</Name>
                                     <Group />
-                                    <DefaultValue xsi:type="xsd:string">pathException</DefaultValue>
+                                    <DefaultValue xsi:type="xsd:string">businessFolder</DefaultValue>
                                     <DataTypeString>System.String</DataTypeString>
                                     <Direction>IN</Direction>
                                 </ScriptVariable>
@@ -695,7 +695,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">248.30769230769232</Value>
+                    <Value xsi:type="xsd:double">187.30769230769232</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -787,7 +787,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">775.99999999999977</Value>
+                    <Value xsi:type="xsd:double">854.99999999999977</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -915,15 +915,9 @@
                                 <ScriptVariable>
                                     <Name>in_Folder</Name>
                                     <Group />
-                                    <DefaultValue xsi:type="xsd:string">pathException</DefaultValue>
+                                    <DefaultValue xsi:type="xsd:string">screenshotFolder</DefaultValue>
                                     <DataTypeString>System.String</DataTypeString>
                                     <Direction>IN</Direction>
-                                </ScriptVariable>
-                                <ScriptVariable>
-                                    <Name>io_FilePath</Name>
-                                    <Group />
-                                    <DataTypeString>System.String</DataTypeString>
-                                    <Direction>IN_OUT</Direction>
                                 </ScriptVariable>
                             </Value>
                         </SerializationItem>
@@ -1025,7 +1019,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">961.17647058823491</Value>
+                    <Value xsi:type="xsd:double">1040.1764705882349</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1191,7 +1185,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentName</Name>
-                    <Value xsi:type="xsd:string">C# Script</Value>
+                    <Value xsi:type="xsd:string">Присвоение</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1204,12 +1198,12 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">443</Value>
+                    <Value xsi:type="xsd:double">105.84615384615358</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">65</Value>
+                    <Value xsi:type="xsd:double">672</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1236,7 +1230,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q12="http://microsoft.com/wsdl/types/" xsi:type="q12:guid">68ca7bb7-42e1-4471-8e4d-ad160aa9cb38</Value>
+                    <Value xmlns:q12="http://microsoft.com/wsdl/types/" xsi:type="q12:guid">0fd55e44-16fe-46ad-a925-1d99570ec670</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1283,39 +1277,18 @@
             <IsIgnore>false</IsIgnore>
             <Components>
                 <SerializationComponent>
-                    <ClassName>LTools.Workflow.Elements.Script.WFCSScript</ClassName>
+                    <ClassName>LTools.Workflow.Elements.WFAssign</ClassName>
                     <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
                     <Properties>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
-                            <Name>Message</Name>
+                            <Name>Variable</Name>
+                            <Value xsi:type="xsd:string">flagEnd</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
-                            <Name>Script</Name>
-                            <Value xsi:type="xsd:string">pathException = pathException ?? "Ошибки";
-
-if(!Directory.Exists(pathException))
-{
-	Directory.CreateDirectory(pathException);
-}
-if(!Directory.Exists(Path.Combine(pathException, "БизнесОшибки")))
-{
-	Directory.CreateDirectory(Path.Combine(pathException, "БизнесОшибки"));
-}
-if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки")))
-{
-	Directory.CreateDirectory(Path.Combine(pathException, "СистемныеОшибки"));
-}</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>Result</Name>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>UpdateVars</Name>
-                            <Value xsi:type="xsd:boolean">true</Value>
+                            <Name>Data</Name>
+                            <Value xsi:type="xsd:string">true</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -1324,7 +1297,7 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentName</Name>
-                            <Value xsi:type="xsd:string">C# Script</Value>
+                            <Value xsi:type="xsd:string">Присвоение</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -1341,7 +1314,375 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q13="http://microsoft.com/wsdl/types/" xsi:type="q13:guid">fb871e11-a6c7-44af-add2-a9ba684a6e1b</Value>
+                            <Value xmlns:q13="http://microsoft.com/wsdl/types/" xsi:type="q13:guid">ca3a451d-7491-4cdf-8ea9-f7f0ae903ac1</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>ContinueOnException</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>PreventLogging</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>SSSuccess</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>SSFail</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>true</IsListValue>
+                            <Name>NoCodeProperties</Name>
+                            <ListValue />
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>NoCodeUsed</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>IsCollapsed</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>ShowAnnotation</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                    </Properties>
+                    <IsBreakpoint>false</IsBreakpoint>
+                    <IsIgnore>false</IsIgnore>
+                </SerializationComponent>
+            </Components>
+        </SerializationComponent>
+        <SerializationComponent xsi:type="SerializationContainer">
+            <ClassName>LTools.Workflow.Elements.Workflow.WFWorkflowContainerSequence</ClassName>
+            <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
+            <Properties>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ComponentName</Name>
+                    <Value xsi:type="xsd:string">Присвоение</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Annotation</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>TextTag</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>X</Name>
+                    <Value xsi:type="xsd:double">105.84615384615358</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Y</Name>
+                    <Value xsi:type="xsd:double">864.99999999999977</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ExceptionHandlerId</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>IsSingleElemented</Name>
+                    <Value xsi:type="xsd:boolean">true</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Variables</Name>
+                    <Value xsi:type="ArrayOfScriptVariable" />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>WaitBefore</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>WaitAfter</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ComponentID</Name>
+                    <Value xmlns:q14="http://microsoft.com/wsdl/types/" xsi:type="q14:guid">a47074a7-3ab6-49d5-b894-0b8756cad0a4</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ContinueOnException</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>PreventLogging</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>SSSuccess</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>SSFail</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>true</IsListValue>
+                    <Name>NoCodeProperties</Name>
+                    <ListValue />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>NoCodeUsed</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>IsCollapsed</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ShowAnnotation</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+            </Properties>
+            <IsBreakpoint>false</IsBreakpoint>
+            <IsIgnore>false</IsIgnore>
+            <Components>
+                <SerializationComponent>
+                    <ClassName>LTools.Workflow.Elements.WFAssign</ClassName>
+                    <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
+                    <Properties>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>Variable</Name>
+                            <Value xsi:type="xsd:string">screenshotFolder</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>Data</Name>
+                            <Value xsi:type="xsd:string">systemFolder</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>TextTag</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>ComponentName</Name>
+                            <Value xsi:type="xsd:string">Присвоение</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>WaitBefore</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>WaitAfter</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>Annotation</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>ComponentID</Name>
+                            <Value xmlns:q15="http://microsoft.com/wsdl/types/" xsi:type="q15:guid">f0efff0a-7089-48c9-ae7a-6bf623d8c0f1</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>ContinueOnException</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>PreventLogging</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>SSSuccess</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>SSFail</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>true</IsListValue>
+                            <Name>NoCodeProperties</Name>
+                            <ListValue />
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>NoCodeUsed</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>IsCollapsed</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>ShowAnnotation</Name>
+                            <Value xsi:type="xsd:boolean">false</Value>
+                        </SerializationItem>
+                    </Properties>
+                    <IsBreakpoint>false</IsBreakpoint>
+                    <IsIgnore>false</IsIgnore>
+                </SerializationComponent>
+            </Components>
+        </SerializationComponent>
+        <SerializationComponent xsi:type="SerializationContainer">
+            <ClassName>LTools.Workflow.Elements.Workflow.WFWorkflowContainerSequence</ClassName>
+            <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
+            <Properties>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ComponentName</Name>
+                    <Value xsi:type="xsd:string">Присвоение</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Annotation</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>TextTag</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>X</Name>
+                    <Value xsi:type="xsd:double">758.384615384615</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Y</Name>
+                    <Value xsi:type="xsd:double">864.99999999999977</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ExceptionHandlerId</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>IsSingleElemented</Name>
+                    <Value xsi:type="xsd:boolean">true</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Variables</Name>
+                    <Value xsi:type="ArrayOfScriptVariable" />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>WaitBefore</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>WaitAfter</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ComponentID</Name>
+                    <Value xmlns:q16="http://microsoft.com/wsdl/types/" xsi:type="q16:guid">6c5eb9b9-1b7d-491c-a24d-b4139124b4b2</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ContinueOnException</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>PreventLogging</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>SSSuccess</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>SSFail</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>true</IsListValue>
+                    <Name>NoCodeProperties</Name>
+                    <ListValue />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>NoCodeUsed</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>IsCollapsed</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ShowAnnotation</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+            </Properties>
+            <IsBreakpoint>false</IsBreakpoint>
+            <IsIgnore>false</IsIgnore>
+            <Components>
+                <SerializationComponent>
+                    <ClassName>LTools.Workflow.Elements.WFAssign</ClassName>
+                    <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
+                    <Properties>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>Variable</Name>
+                            <Value xsi:type="xsd:string">screenshotFolder</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>Data</Name>
+                            <Value xsi:type="xsd:string">businessFolder</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>TextTag</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>ComponentName</Name>
+                            <Value xsi:type="xsd:string">Присвоение</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>WaitBefore</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>WaitAfter</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>Annotation</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>ComponentID</Name>
+                            <Value xmlns:q17="http://microsoft.com/wsdl/types/" xsi:type="q17:guid">e3e1836a-f506-494c-a0a8-153c5066b986</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -1434,12 +1775,12 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q14="http://microsoft.com/wsdl/types/" xsi:type="q14:guid">80bf6889-2617-4abc-b277-d31688549aad</Value>
+                    <Value xmlns:q18="http://microsoft.com/wsdl/types/" xsi:type="q18:guid">80bf6889-2617-4abc-b277-d31688549aad</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q15="http://microsoft.com/wsdl/types/" xsi:type="q15:guid">26108629-30e6-4ffd-a179-8050e8cb46bd</Value>
+                    <Value xmlns:q19="http://microsoft.com/wsdl/types/" xsi:type="q19:guid">26108629-30e6-4ffd-a179-8050e8cb46bd</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1495,7 +1836,7 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q16="http://microsoft.com/wsdl/types/" xsi:type="q16:guid">ca820e03-7bd9-4968-9f0e-57ee24a03b11</Value>
+                    <Value xmlns:q20="http://microsoft.com/wsdl/types/" xsi:type="q20:guid">ca820e03-7bd9-4968-9f0e-57ee24a03b11</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1587,12 +1928,12 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q17="http://microsoft.com/wsdl/types/" xsi:type="q17:guid">80bf6889-2617-4abc-b277-d31688549aad</Value>
+                    <Value xmlns:q21="http://microsoft.com/wsdl/types/" xsi:type="q21:guid">80bf6889-2617-4abc-b277-d31688549aad</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q18="http://microsoft.com/wsdl/types/" xsi:type="q18:guid">6ba18464-d2ef-424e-acce-e4ecedd391fc</Value>
+                    <Value xmlns:q22="http://microsoft.com/wsdl/types/" xsi:type="q22:guid">6ba18464-d2ef-424e-acce-e4ecedd391fc</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1648,7 +1989,7 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q19="http://microsoft.com/wsdl/types/" xsi:type="q19:guid">3dc395e3-625a-4a45-b2a9-6a03f50448a7</Value>
+                    <Value xmlns:q23="http://microsoft.com/wsdl/types/" xsi:type="q23:guid">3dc395e3-625a-4a45-b2a9-6a03f50448a7</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1731,12 +2072,12 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q20="http://microsoft.com/wsdl/types/" xsi:type="q20:guid">5b017b0e-bee9-4ce8-9e57-7d547086f44f</Value>
+                    <Value xmlns:q24="http://microsoft.com/wsdl/types/" xsi:type="q24:guid">5b017b0e-bee9-4ce8-9e57-7d547086f44f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q21="http://microsoft.com/wsdl/types/" xsi:type="q21:guid">80bf6889-2617-4abc-b277-d31688549aad</Value>
+                    <Value xmlns:q25="http://microsoft.com/wsdl/types/" xsi:type="q25:guid">80bf6889-2617-4abc-b277-d31688549aad</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1792,7 +2133,7 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q22="http://microsoft.com/wsdl/types/" xsi:type="q22:guid">2a42ce64-31a0-4ec8-94cb-2dc1aa20c4be</Value>
+                    <Value xmlns:q26="http://microsoft.com/wsdl/types/" xsi:type="q26:guid">2a42ce64-31a0-4ec8-94cb-2dc1aa20c4be</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -1854,187 +2195,10 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>true</IsListValue>
                     <Name>PointsList</Name>
-                    <ListValue>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>230.84615384615358</X>
-                                <Y>759</Y>
-                            </Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>568</X>
-                                <Y>759</Y>
-                            </Value>
-                        </SerializationItem>
-                    </ListValue>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Index</Name>
-                    <Value xsi:type="xsd:int">0</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>BeginItemPointIndex</Name>
-                    <Value xsi:type="xsd:int">2</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>EndItemPointIndex</Name>
-                    <Value xsi:type="xsd:int">0</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>StartElementID</Name>
-                    <Value xmlns:q23="http://microsoft.com/wsdl/types/" xsi:type="q23:guid">26108629-30e6-4ffd-a179-8050e8cb46bd</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>EndElementID</Name>
-                    <Value xmlns:q24="http://microsoft.com/wsdl/types/" xsi:type="q24:guid">3bfaa832-ac9f-4985-a3dc-2460123eab22</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>PathType</Name>
-                    <Value xsi:type="xsd:int">0</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ExceptionType</Name>
-                    <Value xsi:type="xsd:int">-1</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>X</Name>
-                    <Value xsi:type="xsd:double">-1</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Y</Name>
-                    <Value xsi:type="xsd:double">-1</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ExceptionHandlerId</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>IsSingleElemented</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Variables</Name>
-                    <Value xsi:type="ArrayOfScriptVariable" />
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ComponentName</Name>
-                    <Value xsi:type="xsd:string">Связь</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>WaitBefore</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>WaitAfter</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Annotation</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ComponentID</Name>
-                    <Value xmlns:q25="http://microsoft.com/wsdl/types/" xsi:type="q25:guid">b3a341cc-cb3b-4a96-ac3e-7ce35d13fcc1</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ContinueOnException</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>PreventLogging</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>SSSuccess</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>SSFail</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>true</IsListValue>
-                    <Name>NoCodeProperties</Name>
                     <ListValue />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
-                    <Name>NoCodeUsed</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>IsCollapsed</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>ShowAnnotation</Name>
-                    <Value xsi:type="xsd:boolean">false</Value>
-                </SerializationItem>
-            </Properties>
-            <IsBreakpoint>false</IsBreakpoint>
-            <IsIgnore>false</IsIgnore>
-            <Components />
-        </SerializationComponent>
-        <SerializationComponent xsi:type="SerializationContainer">
-            <ClassName>LTools.Workflow.Elements.Workflow.WFWorkflowPath</ClassName>
-            <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
-            <Properties>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>Result</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>TextTag</Name>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>true</IsListValue>
-                    <Name>PointsList</Name>
-                    <ListValue>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>883.384615384615</X>
-                                <Y>759</Y>
-                            </Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PointsList</Name>
-                            <Value xsi:type="Point">
-                                <X>568</X>
-                                <Y>759</Y>
-                            </Value>
-                        </SerializationItem>
-                    </ListValue>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
                     <Name>Index</Name>
                     <Value xsi:type="xsd:int">0</Value>
                 </SerializationItem>
@@ -2051,15 +2215,15 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q26="http://microsoft.com/wsdl/types/" xsi:type="q26:guid">6ba18464-d2ef-424e-acce-e4ecedd391fc</Value>
-                </SerializationItem>
-                <SerializationItem>
-                    <IsListValue>false</IsListValue>
-                    <Name>EndElementID</Name>
                     <Value xmlns:q27="http://microsoft.com/wsdl/types/" xsi:type="q27:guid">3bfaa832-ac9f-4985-a3dc-2460123eab22</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
+                    <Name>EndElementID</Name>
+                    <Value xmlns:q28="http://microsoft.com/wsdl/types/" xsi:type="q28:guid">73398117-3989-4e47-9c70-ba985574c49a</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
                     <Name>PathType</Name>
                     <Value xsi:type="xsd:int">0</Value>
                 </SerializationItem>
@@ -2090,7 +2254,6 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Variables</Name>
-                    <Value xsi:type="ArrayOfScriptVariable" />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2112,7 +2275,7 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q28="http://microsoft.com/wsdl/types/" xsi:type="q28:guid">a9c55682-2c60-4cbf-9995-a0e54dce2382</Value>
+                    <Value xmlns:q29="http://microsoft.com/wsdl/types/" xsi:type="q29:guid">613246dc-96c6-4cb0-9e0e-bcca3e42dea9</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2194,12 +2357,12 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q29="http://microsoft.com/wsdl/types/" xsi:type="q29:guid">3bfaa832-ac9f-4985-a3dc-2460123eab22</Value>
+                    <Value xmlns:q30="http://microsoft.com/wsdl/types/" xsi:type="q30:guid">c2891ad7-abe2-419d-8109-55d436f48403</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q30="http://microsoft.com/wsdl/types/" xsi:type="q30:guid">73398117-3989-4e47-9c70-ba985574c49a</Value>
+                    <Value xmlns:q31="http://microsoft.com/wsdl/types/" xsi:type="q31:guid">5b017b0e-bee9-4ce8-9e57-7d547086f44f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2233,6 +2396,7 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Variables</Name>
+                    <Value xsi:type="ArrayOfScriptVariable" />
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2254,7 +2418,7 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q31="http://microsoft.com/wsdl/types/" xsi:type="q31:guid">613246dc-96c6-4cb0-9e0e-bcca3e42dea9</Value>
+                    <Value xmlns:q32="http://microsoft.com/wsdl/types/" xsi:type="q32:guid">edc5aeb5-4851-45fc-8808-799c763b1d43</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2336,12 +2500,12 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q32="http://microsoft.com/wsdl/types/" xsi:type="q32:guid">c2891ad7-abe2-419d-8109-55d436f48403</Value>
+                    <Value xmlns:q33="http://microsoft.com/wsdl/types/" xsi:type="q33:guid">26108629-30e6-4ffd-a179-8050e8cb46bd</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q33="http://microsoft.com/wsdl/types/" xsi:type="q33:guid">68ca7bb7-42e1-4471-8e4d-ad160aa9cb38</Value>
+                    <Value xmlns:q34="http://microsoft.com/wsdl/types/" xsi:type="q34:guid">0fd55e44-16fe-46ad-a925-1d99570ec670</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2397,7 +2561,7 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q34="http://microsoft.com/wsdl/types/" xsi:type="q34:guid">29d5f915-37b7-4d53-a302-20ffda0b6f9e</Value>
+                    <Value xmlns:q35="http://microsoft.com/wsdl/types/" xsi:type="q35:guid">c899808c-457c-418b-870c-18d7987e5be4</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2479,12 +2643,12 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q35="http://microsoft.com/wsdl/types/" xsi:type="q35:guid">68ca7bb7-42e1-4471-8e4d-ad160aa9cb38</Value>
+                    <Value xmlns:q36="http://microsoft.com/wsdl/types/" xsi:type="q36:guid">6ba18464-d2ef-424e-acce-e4ecedd391fc</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q36="http://microsoft.com/wsdl/types/" xsi:type="q36:guid">5b017b0e-bee9-4ce8-9e57-7d547086f44f</Value>
+                    <Value xmlns:q37="http://microsoft.com/wsdl/types/" xsi:type="q37:guid">6c5eb9b9-1b7d-491c-a24d-b4139124b4b2</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2540,7 +2704,436 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q37="http://microsoft.com/wsdl/types/" xsi:type="q37:guid">10e76338-97d9-4741-9a9c-22547563038f</Value>
+                    <Value xmlns:q38="http://microsoft.com/wsdl/types/" xsi:type="q38:guid">2f7c7fe5-ddb7-4c45-83d7-468760fa984f</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ContinueOnException</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>PreventLogging</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>SSSuccess</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>SSFail</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>true</IsListValue>
+                    <Name>NoCodeProperties</Name>
+                    <ListValue />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>NoCodeUsed</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>IsCollapsed</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ShowAnnotation</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+            </Properties>
+            <IsBreakpoint>false</IsBreakpoint>
+            <IsIgnore>false</IsIgnore>
+            <Components />
+        </SerializationComponent>
+        <SerializationComponent xsi:type="SerializationContainer">
+            <ClassName>LTools.Workflow.Elements.Workflow.WFWorkflowPath</ClassName>
+            <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
+            <Properties>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Result</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>TextTag</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>true</IsListValue>
+                    <Name>PointsList</Name>
+                    <ListValue />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Index</Name>
+                    <Value xsi:type="xsd:int">0</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>BeginItemPointIndex</Name>
+                    <Value xsi:type="xsd:int">2</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>EndItemPointIndex</Name>
+                    <Value xsi:type="xsd:int">0</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>StartElementID</Name>
+                    <Value xmlns:q39="http://microsoft.com/wsdl/types/" xsi:type="q39:guid">0fd55e44-16fe-46ad-a925-1d99570ec670</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>EndElementID</Name>
+                    <Value xmlns:q40="http://microsoft.com/wsdl/types/" xsi:type="q40:guid">a47074a7-3ab6-49d5-b894-0b8756cad0a4</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>PathType</Name>
+                    <Value xsi:type="xsd:int">0</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ExceptionType</Name>
+                    <Value xsi:type="xsd:int">-1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>X</Name>
+                    <Value xsi:type="xsd:double">-1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Y</Name>
+                    <Value xsi:type="xsd:double">-1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ExceptionHandlerId</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>IsSingleElemented</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Variables</Name>
+                    <Value xsi:type="ArrayOfScriptVariable" />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ComponentName</Name>
+                    <Value xsi:type="xsd:string">Связь</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>WaitBefore</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>WaitAfter</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Annotation</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ComponentID</Name>
+                    <Value xmlns:q41="http://microsoft.com/wsdl/types/" xsi:type="q41:guid">f95b2c28-8608-4961-8ea0-6790355c81b3</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ContinueOnException</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>PreventLogging</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>SSSuccess</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>SSFail</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>true</IsListValue>
+                    <Name>NoCodeProperties</Name>
+                    <ListValue />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>NoCodeUsed</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>IsCollapsed</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ShowAnnotation</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+            </Properties>
+            <IsBreakpoint>false</IsBreakpoint>
+            <IsIgnore>false</IsIgnore>
+            <Components />
+        </SerializationComponent>
+        <SerializationComponent xsi:type="SerializationContainer">
+            <ClassName>LTools.Workflow.Elements.Workflow.WFWorkflowPath</ClassName>
+            <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
+            <Properties>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Result</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>TextTag</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>true</IsListValue>
+                    <Name>PointsList</Name>
+                    <ListValue />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Index</Name>
+                    <Value xsi:type="xsd:int">0</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>BeginItemPointIndex</Name>
+                    <Value xsi:type="xsd:int">1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>EndItemPointIndex</Name>
+                    <Value xsi:type="xsd:int">3</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>StartElementID</Name>
+                    <Value xmlns:q42="http://microsoft.com/wsdl/types/" xsi:type="q42:guid">a47074a7-3ab6-49d5-b894-0b8756cad0a4</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>EndElementID</Name>
+                    <Value xmlns:q43="http://microsoft.com/wsdl/types/" xsi:type="q43:guid">3bfaa832-ac9f-4985-a3dc-2460123eab22</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>PathType</Name>
+                    <Value xsi:type="xsd:int">0</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ExceptionType</Name>
+                    <Value xsi:type="xsd:int">-1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>X</Name>
+                    <Value xsi:type="xsd:double">-1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Y</Name>
+                    <Value xsi:type="xsd:double">-1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ExceptionHandlerId</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>IsSingleElemented</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Variables</Name>
+                    <Value xsi:type="ArrayOfScriptVariable" />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ComponentName</Name>
+                    <Value xsi:type="xsd:string">Связь</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>WaitBefore</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>WaitAfter</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Annotation</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ComponentID</Name>
+                    <Value xmlns:q44="http://microsoft.com/wsdl/types/" xsi:type="q44:guid">792c750f-2d4a-4d59-a1bd-b6f442e0de74</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ContinueOnException</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>PreventLogging</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>SSSuccess</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>SSFail</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>true</IsListValue>
+                    <Name>NoCodeProperties</Name>
+                    <ListValue />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>NoCodeUsed</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>IsCollapsed</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ShowAnnotation</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+            </Properties>
+            <IsBreakpoint>false</IsBreakpoint>
+            <IsIgnore>false</IsIgnore>
+            <Components />
+        </SerializationComponent>
+        <SerializationComponent xsi:type="SerializationContainer">
+            <ClassName>LTools.Workflow.Elements.Workflow.WFWorkflowPath</ClassName>
+            <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
+            <Properties>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Result</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>TextTag</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>true</IsListValue>
+                    <Name>PointsList</Name>
+                    <ListValue />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Index</Name>
+                    <Value xsi:type="xsd:int">0</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>BeginItemPointIndex</Name>
+                    <Value xsi:type="xsd:int">3</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>EndItemPointIndex</Name>
+                    <Value xsi:type="xsd:int">1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>StartElementID</Name>
+                    <Value xmlns:q45="http://microsoft.com/wsdl/types/" xsi:type="q45:guid">6c5eb9b9-1b7d-491c-a24d-b4139124b4b2</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>EndElementID</Name>
+                    <Value xmlns:q46="http://microsoft.com/wsdl/types/" xsi:type="q46:guid">3bfaa832-ac9f-4985-a3dc-2460123eab22</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>PathType</Name>
+                    <Value xsi:type="xsd:int">0</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ExceptionType</Name>
+                    <Value xsi:type="xsd:int">-1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>X</Name>
+                    <Value xsi:type="xsd:double">-1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Y</Name>
+                    <Value xsi:type="xsd:double">-1</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ExceptionHandlerId</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>IsSingleElemented</Name>
+                    <Value xsi:type="xsd:boolean">false</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Variables</Name>
+                    <Value xsi:type="ArrayOfScriptVariable" />
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ComponentName</Name>
+                    <Value xsi:type="xsd:string">Связь</Value>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>WaitBefore</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>WaitAfter</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>Annotation</Name>
+                </SerializationItem>
+                <SerializationItem>
+                    <IsListValue>false</IsListValue>
+                    <Name>ComponentID</Name>
+                    <Value xmlns:q47="http://microsoft.com/wsdl/types/" xsi:type="q47:guid">f1c9800d-f1da-4535-a73e-5fda65f152c2</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2588,7 +3181,14 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
             <Components />
         </SerializationComponent>
     </Components>
-    <GlobalVariables />
+    <GlobalVariables>
+        <ScriptVariable>
+            <Name>screenshotFolder</Name>
+            <Group />
+            <DataTypeString>System.String</DataTypeString>
+            <Direction>IN_OUT</Direction>
+        </ScriptVariable>
+    </GlobalVariables>
     <Arguments>
         <ScriptVariable>
             <Name>exception</Name>
@@ -2597,10 +3197,22 @@ if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки
             <Direction>IN_OUT</Direction>
         </ScriptVariable>
         <ScriptVariable>
-            <Name>pathException</Name>
+            <Name>systemFolder</Name>
             <Group />
             <DataTypeString>String</DataTypeString>
             <Direction>IN</Direction>
+        </ScriptVariable>
+        <ScriptVariable>
+            <Name>businessFolder</Name>
+            <Group />
+            <DataTypeString>String</DataTypeString>
+            <Direction>IN</Direction>
+        </ScriptVariable>
+        <ScriptVariable>
+            <Name>flagEnd</Name>
+            <Group />
+            <DataTypeString>Boolean</DataTypeString>
+            <Direction>IN_OUT</Direction>
         </ScriptVariable>
     </Arguments>
     <UseCustomDiagramConnectorFormat>true</UseCustomDiagramConnectorFormat>

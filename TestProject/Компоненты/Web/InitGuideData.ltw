@@ -417,10 +417,10 @@
                                 <IsListValue>false</IsListValue>
                                 <Name>Script</Name>
                                 <Value xsi:type="xsd:string">// 1. Находим исходные названия колонок (листов), подходящих под критерии
-string sheetMark = sheets.FirstOrDefault(sh =&gt; 
+sheetMark = sheets.FirstOrDefault(sh =&gt; 
     Regex.Replace((sh ?? "").ToLower(), @"\s+", "") == "марка");
 
-string sheetMine = sheets.FirstOrDefault(sh =&gt; 
+sheetMine = sheets.FirstOrDefault(sh =&gt; 
     Regex.Replace((sh ?? "").ToLower(), @"\s+", "") == "шахты");
 
 // 2. Выделяем в массив найденные исходные названия
@@ -549,7 +549,7 @@ flagSheets = sheetMark != null &amp;&amp; sheetMine != null;</Value>
                             <SerializationItem>
                                 <IsListValue>false</IsListValue>
                                 <Name>Annotation</Name>
-                                <Value xsi:type="xsd:string">Если нет нужных колонок, выбросить бинес-исключение</Value>
+                                <Value xsi:type="xsd:string">Если нет нужных страниц, выбросить бизнес-исключение</Value>
                             </SerializationItem>
                             <SerializationItem>
                                 <IsListValue>false</IsListValue>
@@ -1333,6 +1333,20 @@ flagSheets = sheetMark != null &amp;&amp; sheetMine != null;</Value>
                                                         <DataTypeString>System.Collections.Generic.List&lt;System.String&gt;</DataTypeString>
                                                         <Direction>IN_OUT</Direction>
                                                     </ScriptVariable>
+                                                    <ScriptVariable>
+                                                        <Name>sheetMark</Name>
+                                                        <Group />
+                                                        <DefaultValue xsi:type="xsd:string">sheetMark</DefaultValue>
+                                                        <DataTypeString>System.String</DataTypeString>
+                                                        <Direction>IN</Direction>
+                                                    </ScriptVariable>
+                                                    <ScriptVariable>
+                                                        <Name>sheetMine</Name>
+                                                        <Group />
+                                                        <DefaultValue xsi:type="xsd:string">sheetMine</DefaultValue>
+                                                        <DataTypeString>System.String</DataTypeString>
+                                                        <Direction>IN</Direction>
+                                                    </ScriptVariable>
                                                 </Value>
                                             </SerializationItem>
                                             <SerializationItem>
@@ -1454,6 +1468,18 @@ flagSheets = sheetMark != null &amp;&amp; sheetMine != null;</Value>
             <Name>matchedSheets</Name>
             <Group />
             <DataTypeString>List&lt;String&gt;</DataTypeString>
+            <Direction>IN_OUT</Direction>
+        </ScriptVariable>
+        <ScriptVariable>
+            <Name>sheetMine</Name>
+            <Group />
+            <DataTypeString>System.String</DataTypeString>
+            <Direction>IN_OUT</Direction>
+        </ScriptVariable>
+        <ScriptVariable>
+            <Name>sheetMark</Name>
+            <Group />
+            <DataTypeString>System.String</DataTypeString>
             <Direction>IN_OUT</Direction>
         </ScriptVariable>
     </GlobalVariables>

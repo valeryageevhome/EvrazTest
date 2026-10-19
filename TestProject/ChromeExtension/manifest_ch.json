@@ -1,0 +1,9 @@
+﻿{
+  "name": "com.primo.webbrowserch",
+  "description": "Primo WebBrowser Native Listener",
+  "path": "C:\\Program Files\\Primo\\Primo Studio Community x64\\LTools.WebBrowser.Native.exe",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://hmfloecafmalofkgililebnlpojjdmoa/"
+  ]
+}

@@ -205,7 +205,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Equation</Name>
-                    <Value xsi:type="xsd:string">sheet.ToLower().Contains("шахты")</Value>
+                    <Value xsi:type="xsd:string">sheet == sheetMine</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -768,7 +768,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Equation</Name>
-                    <Value xsi:type="xsd:string">sheet.ToLower().Contains("марка")</Value>
+                    <Value xsi:type="xsd:string">sheet == sheetMark</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2644,6 +2644,7 @@ columnInnName = FindCol("инн");</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Result</Name>
+                    <Value xsi:type="xsd:string">true</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3592,6 +3593,18 @@ columnInnName = FindCol("инн");</Value>
             <Group />
             <DataTypeString>List&lt;String&gt;</DataTypeString>
             <Direction>IN_OUT</Direction>
+        </ScriptVariable>
+        <ScriptVariable>
+            <Name>sheetMark</Name>
+            <Group />
+            <DataTypeString>String</DataTypeString>
+            <Direction>IN</Direction>
+        </ScriptVariable>
+        <ScriptVariable>
+            <Name>sheetMine</Name>
+            <Group />
+            <DataTypeString>String</DataTypeString>
+            <Direction>IN</Direction>
         </ScriptVariable>
     </Arguments>
     <UseCustomDiagramConnectorFormat>true</UseCustomDiagramConnectorFormat>

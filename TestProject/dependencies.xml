@@ -12,11 +12,6 @@
             <SourceId xsi:nil="true" />
         </NugetDependency>
         <NugetDependency>
-            <Id>System.Runtime</Id>
-            <Version>4.3.0</Version>
-            <SourceId xsi:nil="true" />
-        </NugetDependency>
-        <NugetDependency>
             <Id>Microsoft.CSharp</Id>
             <Version>4.7.0</Version>
             <SourceId xsi:nil="true" />
@@ -42,13 +37,18 @@
             <SourceId xsi:nil="true" />
         </NugetDependency>
         <NugetDependency>
-            <Id>System.Runtime.CompilerServices.Unsafe</Id>
-            <Version>6.1.2</Version>
+            <Id>DocumentFormat.OpenXml</Id>
+            <Version>2.7.2</Version>
             <SourceId xsi:nil="true" />
         </NugetDependency>
         <NugetDependency>
-            <Id>DocumentFormat.OpenXml</Id>
-            <Version>2.7.2</Version>
+            <Id>Newtonsoft.Json</Id>
+            <Version>13.0.4</Version>
+            <SourceId xsi:nil="true" />
+        </NugetDependency>
+        <NugetDependency>
+            <Id>System.Runtime</Id>
+            <Version>4.3.1</Version>
             <SourceId xsi:nil="true" />
         </NugetDependency>
     </NugetDependencies>
@@ -88,6 +88,12 @@
         </ProjectNamespace>
         <ProjectNamespace>
             <FullName>System.Text.RegularExpressions</FullName>
+        </ProjectNamespace>
+        <ProjectNamespace>
+            <FullName>Newtonsoft.Json</FullName>
+        </ProjectNamespace>
+        <ProjectNamespace>
+            <FullName>Newtonsoft.Json.Linq</FullName>
         </ProjectNamespace>
     </Namespaces>
 </ProjectDependencies>

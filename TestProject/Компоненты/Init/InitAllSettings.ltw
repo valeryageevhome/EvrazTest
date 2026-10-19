@@ -931,7 +931,7 @@
         <ScriptVariable>
             <Name>in_ConfigFile</Name>
             <Group />
-            <DefaultValue xsi:type="xsd:string">@"Данные\Конфигурационный файл.xlsx"</DefaultValue>
+            <DefaultValue xsi:type="xsd:string" />
             <Comment>Путь до конфигурационного файла</Comment>
             <DataTypeString>System.String</DataTypeString>
             <Direction>IN</Direction>
