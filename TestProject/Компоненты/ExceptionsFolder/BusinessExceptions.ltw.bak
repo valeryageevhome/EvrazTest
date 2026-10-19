@@ -221,7 +221,7 @@
                                     <Value xsi:type="MultipleAssignItem">
                                         <Variable>logFilePath</Variable>
                                         <IsNoCodeVariable>false</IsNoCodeVariable>
-                                        <Assign>Path.Combine(System.IO.Directory.GetCurrentDirectory(), pathExceptions, "Бизнес.txt");</Assign>
+                                        <Assign>Path.Combine(System.IO.Directory.GetCurrentDirectory(), pathExceptions, "БизнесОшибки", "Бизнес.txt");</Assign>
                                         <IsNoCodeAssign>false</IsNoCodeAssign>
                                     </Value>
                                 </SerializationItem>

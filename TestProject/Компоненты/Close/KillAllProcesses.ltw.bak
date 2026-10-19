@@ -183,7 +183,7 @@
                     <SerializationItem>
                         <IsListValue>false</IsListValue>
                         <Name>Data</Name>
-                        <Value xsi:type="xsd:string">new List&lt;string&gt; {"chrome"}</Value>
+                        <Value xsi:type="xsd:string">new List&lt;string&gt; {"chrome", "excel"}</Value>
                     </SerializationItem>
                     <SerializationItem>
                         <IsListValue>false</IsListValue>

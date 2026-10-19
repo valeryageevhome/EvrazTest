@@ -1298,6 +1298,14 @@
 if(!Directory.Exists(pathException))
 {
 	Directory.CreateDirectory(pathException);
+}
+if(!Directory.Exists(Path.Combine(pathException, "БизнесОшибки")))
+{
+	Directory.CreateDirectory(Path.Combine(pathException, "БизнесОшибки"));
+}
+if(!Directory.Exists(Path.Combine(pathException, "СистемныеОшибки")))
+{
+	Directory.CreateDirectory(Path.Combine(pathException, "СистемныеОшибки"));
 }</Value>
                         </SerializationItem>
                         <SerializationItem>

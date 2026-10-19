@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ClosedXML</id>
+    <version>0.95.4</version>
+    <authors>Francois Botha,Aleksei Pankratev,Manuel de Leon,Amir Ghezelbash</authors>
+    <owners></owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>nuget-logo.png</icon>
+    <projectUrl>https://github.com/ClosedXML/ClosedXML</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/ClosedXML/ClosedXML/develop/resources/logo/nuget-logo.png</iconUrl>
+    <description>ClosedXML is a .NET library for reading, manipulating and writing Excel 2007+ (.xlsx, .xlsm) files. It aims to provide an intuitive and user-friendly interface to dealing with the underlying OpenXML API.</description>
+    <releaseNotes>See https://github.com/ClosedXML/ClosedXML/releases/tag/0.95.4</releaseNotes>
+    <copyright>MIT</copyright>
+    <repository type="git" url="https://github.com/ClosedXML/ClosedXML.git" commit="b8868c8f534c03086cd3dbe43617c459d2d0b584" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="DocumentFormat.OpenXml" version="2.7.2" exclude="Build,Analyzers" />
+        <dependency id="ExcelNumberFormat" version="1.0.10" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.6">
+        <dependency id="DocumentFormat.OpenXml" version="2.7.2" exclude="Build,Analyzers" />
+        <dependency id="ExcelNumberFormat" version="1.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CSharp" version="4.7.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="DocumentFormat.OpenXml" version="2.7.2" exclude="Build,Analyzers" />
+        <dependency id="ExcelNumberFormat" version="1.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CSharp" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Common" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework4.0" />
+      <frameworkAssembly assemblyName="WindowsBase" targetFramework=".NETFramework4.0" />
+    </frameworkAssemblies>
+  </metadata>
+</package>
