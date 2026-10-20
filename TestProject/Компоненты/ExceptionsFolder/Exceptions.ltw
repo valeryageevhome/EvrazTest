@@ -350,7 +350,7 @@
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Equation</Name>
-                    <Value xsi:type="xsd:string">exception.ExceptionType.ToString() == "General" || exception.ExceptionType.ToString() == "System"</Value>
+                    <Value xsi:type="xsd:string">exception.ExceptionType.ToString() == "System"</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>

@@ -1786,31 +1786,25 @@
                             <Value xsi:type="xsd:string">string rawUserDataPath = Config["userDataPath"]?.ToString().Trim();
 string rawPathExtension = Config["pathExtension"]?.ToString().Trim();
 
-if (string.IsNullOrWhiteSpace(rawUserDataPath))
-{
-    throw new ArgumentException("Параметр 'userDataPath' в Config пуст или не задан.");
-}
+string rawbusinessExPath = Config["BusinessExPath"]?.ToString()?.Trim();
+string rawsystemExPath = Config["SystemExPath"]?.ToString()?.Trim();
 
-if (string.IsNullOrWhiteSpace(rawPathExtension))
-{
-    throw new ArgumentException("Параметр 'pathExtension' в Config пуст или не задан.");
-}
-
-// 2. Метод валидации и создания директории
-Action&lt;string, string&gt; ensureDirectoryValid = (path, paramName) =&gt;
+// 1. Метод валидации и создания директории
+Action&lt;string, string, bool&gt; ensureDirectoryValid = (path, paramName, flagCreate) =&gt;
 {
     try
     {
 		// Проверяем корректность формата пути и раскрываем относительный путь в абсолютный
         string fullPath = String.Empty;
-		if(paramName == "userDataPath")
+		if(flagCreate)
 		{
-			fullPath = Path.GetFullPath(Path.Combine(path, "UserData"));
+			fullPath = Path.GetFullPath(Path.Combine(path, paramName));
 		}
-		else 
+		else
 		{
 			fullPath = Path.GetFullPath(path);
 		}
+		
         // Проверяем, что путь указывает на корень или конкретную папку, а не содержит недопустимые имена
         if (string.IsNullOrWhiteSpace(Path.GetPathRoot(fullPath)))
         {
@@ -1829,13 +1823,19 @@ Action&lt;string, string&gt; ensureDirectoryValid = (path, paramName) =&gt;
     }
 };
 
-// 3. Выполняем проверку и создание
-ensureDirectoryValid(rawUserDataPath, "userDataPath");
-ensureDirectoryValid(rawPathExtension, "pathExtension");
+// 2. Выполняем проверку и создание
+ensureDirectoryValid(rawUserDataPath, "UserData", true);
+ensureDirectoryValid(rawPathExtension, nameof(rawPathExtension), false);
 
-// 4. Присваиваем проверенные пути в рабочие переменные
+ensureDirectoryValid(rawbusinessExPath, nameof(rawbusinessExPath), false);
+ensureDirectoryValid(rawsystemExPath, nameof(rawsystemExPath), false);
+
+// 3. Присваиваем проверенные пути в рабочие переменные
 userDataPath = Path.GetFullPath(Path.Combine(rawUserDataPath, "UserData"));
-pathExtension = Path.GetFullPath(rawPathExtension);</Value>
+pathExtension = Path.GetFullPath(rawPathExtension);
+
+businessExPath = Path.GetFullPath(rawbusinessExPath);
+systemExPath = Path.GetFullPath(rawsystemExPath);</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -1917,161 +1917,9 @@ pathExtension = Path.GetFullPath(rawPathExtension);</Value>
                     <IsIgnore>false</IsIgnore>
                 </SerializationComponent>
                 <SerializationComponent>
-                    <ClassName>LTools.Workflow.Elements.Script.WFCSScript</ClassName>
-                    <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
-                    <Properties>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>Message</Name>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>Script</Name>
-                            <Value xsi:type="xsd:string">// 1. Получение путей из Config (или используйте уже объявленные переменные)
-businessExPath = Config["BusinessExPath"]?.ToString()?.Trim();
-systemExPath = Config["SystemExPath"]?.ToString()?.Trim();
-
-// 2. Метод строгой проверки полного пути и создания каталога
-Action&lt;string, string&gt; ensureDirectoryValid = (path, paramName) =&gt;
-{
-    // Путь из конфига обязательно должен быть заполнен
-    if (string.IsNullOrWhiteSpace(path))
-    {
-        throw new ArgumentException($"Параметр '{paramName}' в конфигурации пуст или не задан.");
-    }
-
-    try
-    {
-        // Проверяем, что путь абсолютный (полный путь с диском, например C:\ или сетевой \\server\share)
-        if (!Path.IsPathRooted(path))
-        {
-            throw new FormatException($"Путь '{path}' не является абсолютным (полным) путем.");
-        }
-
-        // Проверяем синтаксическую корректность и наличие корня
-        string fullPath = Path.GetFullPath(Path.Combine(path, paramName));
-        if (string.IsNullOrWhiteSpace(Path.GetPathRoot(fullPath)))
-        {
-            throw new FormatException($"Путь '{path}' не содержит корневого диска или сетевого префикса.");
-        }
-
-        // Создаем папку (со всеми вложенными подпапками), если ее еще нет
-        if (!Directory.Exists(fullPath))
-        {
-            Directory.CreateDirectory(fullPath);
-        }
-    }
-    catch (Exception ex) when (!(ex is DirectoryNotFoundException || ex is IOException || ex is UnauthorizedAccessException || ex is ArgumentException || ex is NotSupportedException || ex is FormatException))
-    {
-        throw;
-    }
-    catch (Exception ex)
-    {
-        throw new InvalidOperationException($"Ошибка проверки или создания каталога для '{paramName}' ('{path}'): {ex.Message}", ex);
-    }
-};
-
-
-// 3. Валидация и создание для каждого пути
-ensureDirectoryValid(businessExPath, "BusinessEx");
-ensureDirectoryValid(systemExPath, "SystemEx");
-
-// 4. Приведение к каноническому формату
-businessExPath = Path.GetFullPath(Path.Combine(businessExPath, "BusinessEx"));
-systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>Result</Name>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>UpdateVars</Name>
-                            <Value xsi:type="xsd:boolean">true</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>TextTag</Name>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>ComponentName</Name>
-                            <Value xsi:type="xsd:string">C# Script</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>WaitBefore</Name>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>WaitAfter</Name>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>Annotation</Name>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>ComponentID</Name>
-                            <Value xmlns:q20="http://microsoft.com/wsdl/types/" xsi:type="q20:guid">6e4b8bfb-ac73-4d4e-bdbf-18d2298a73fc</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>ContinueOnException</Name>
-                            <Value xsi:type="xsd:boolean">false</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>PreventLogging</Name>
-                            <Value xsi:type="xsd:boolean">false</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>SSSuccess</Name>
-                            <Value xsi:type="xsd:boolean">false</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>SSFail</Name>
-                            <Value xsi:type="xsd:boolean">false</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>true</IsListValue>
-                            <Name>NoCodeProperties</Name>
-                            <ListValue />
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>NoCodeUsed</Name>
-                            <Value xsi:type="xsd:boolean">false</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>IsCollapsed</Name>
-                            <Value xsi:type="xsd:boolean">false</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>ShowAnnotation</Name>
-                            <Value xsi:type="xsd:boolean">false</Value>
-                        </SerializationItem>
-                    </Properties>
-                    <IsBreakpoint>false</IsBreakpoint>
-                    <IsIgnore>false</IsIgnore>
-                </SerializationComponent>
-                <SerializationComponent>
                     <ClassName>LTools.Workflow.Elements.WFMultipleAssign</ClassName>
                     <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
                     <Properties>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>ComponentName</Name>
-                            <Value xsi:type="xsd:string">Множественное присвоение</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>Annotation</Name>
-                        </SerializationItem>
                         <SerializationItem>
                             <IsListValue>true</IsListValue>
                             <Name>Items</Name>
@@ -2124,6 +1972,11 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
+                            <Name>ComponentName</Name>
+                            <Value xsi:type="xsd:string">Множественное присвоение</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
                             <Name>WaitBefore</Name>
                         </SerializationItem>
                         <SerializationItem>
@@ -2132,8 +1985,12 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
+                            <Name>Annotation</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q21="http://microsoft.com/wsdl/types/" xsi:type="q21:guid">74491b4d-9b99-4262-9769-e9439f9f127f</Value>
+                            <Value xmlns:q20="http://microsoft.com/wsdl/types/" xsi:type="q20:guid">74491b4d-9b99-4262-9769-e9439f9f127f</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2193,7 +2050,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Annotation</Name>
-                    <Value xsi:type="xsd:string">1) Работа над блоком с Excel, группировка данных</Value>
+                    <Value xsi:type="xsd:string">Работа над блоком с Excel, группировка данных</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2202,12 +2059,12 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>X</Name>
-                    <Value xsi:type="xsd:double">480.63481684981662</Value>
+                    <Value xsi:type="xsd:double">450.31481684981662</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>Y</Name>
-                    <Value xsi:type="xsd:double">1320.9072407786052</Value>
+                    <Value xsi:type="xsd:double">1318.9072407786052</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2224,7 +2081,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q22="http://microsoft.com/wsdl/types/" xsi:type="q22:guid">0147c038-6756-44b5-a747-a89a51e7a540</Value>
+                    <Value xmlns:q21="http://microsoft.com/wsdl/types/" xsi:type="q21:guid">0147c038-6756-44b5-a747-a89a51e7a540</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -2317,7 +2174,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q23="http://microsoft.com/wsdl/types/" xsi:type="q23:guid">e8046e39-563a-4fa0-891c-7cd6d0136b4e</Value>
+                            <Value xmlns:q22="http://microsoft.com/wsdl/types/" xsi:type="q22:guid">e8046e39-563a-4fa0-891c-7cd6d0136b4e</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2393,7 +2250,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ExceptionHandlerId</Name>
-                            <Value xmlns:q24="http://microsoft.com/wsdl/types/" xsi:type="q24:guid">13e05fbc-9971-45e2-a4e8-790292d85db0</Value>
+                            <Value xmlns:q23="http://microsoft.com/wsdl/types/" xsi:type="q23:guid">13e05fbc-9971-45e2-a4e8-790292d85db0</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2416,7 +2273,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q25="http://microsoft.com/wsdl/types/" xsi:type="q25:guid">a755fe16-7af8-4e3d-99d7-54164469f010</Value>
+                            <Value xmlns:q24="http://microsoft.com/wsdl/types/" xsi:type="q24:guid">a755fe16-7af8-4e3d-99d7-54164469f010</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2568,7 +2425,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>ComponentID</Name>
-                                    <Value xmlns:q26="http://microsoft.com/wsdl/types/" xsi:type="q26:guid">e50220d6-753a-4ba0-a714-34b72a607121</Value>
+                                    <Value xmlns:q25="http://microsoft.com/wsdl/types/" xsi:type="q25:guid">e50220d6-753a-4ba0-a714-34b72a607121</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
@@ -2668,7 +2525,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q27="http://microsoft.com/wsdl/types/" xsi:type="q27:guid">7a8a078c-b606-433f-9103-7bd830b1c657</Value>
+                            <Value xmlns:q26="http://microsoft.com/wsdl/types/" xsi:type="q26:guid">7a8a078c-b606-433f-9103-7bd830b1c657</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2827,7 +2684,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>ComponentID</Name>
-                                    <Value xmlns:q28="http://microsoft.com/wsdl/types/" xsi:type="q28:guid">938a2e73-c6b8-4e41-b2ea-f53170d12d58</Value>
+                                    <Value xmlns:q27="http://microsoft.com/wsdl/types/" xsi:type="q27:guid">938a2e73-c6b8-4e41-b2ea-f53170d12d58</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
@@ -2910,12 +2767,12 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>StartElementID</Name>
-                            <Value xmlns:q29="http://microsoft.com/wsdl/types/" xsi:type="q29:guid">e8046e39-563a-4fa0-891c-7cd6d0136b4e</Value>
+                            <Value xmlns:q28="http://microsoft.com/wsdl/types/" xsi:type="q28:guid">e8046e39-563a-4fa0-891c-7cd6d0136b4e</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>EndElementID</Name>
-                            <Value xmlns:q30="http://microsoft.com/wsdl/types/" xsi:type="q30:guid">a755fe16-7af8-4e3d-99d7-54164469f010</Value>
+                            <Value xmlns:q29="http://microsoft.com/wsdl/types/" xsi:type="q29:guid">a755fe16-7af8-4e3d-99d7-54164469f010</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2940,7 +2797,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ExceptionHandlerId</Name>
-                            <Value xmlns:q31="http://microsoft.com/wsdl/types/" xsi:type="q31:guid">13e05fbc-9971-45e2-a4e8-790292d85db0</Value>
+                            <Value xmlns:q30="http://microsoft.com/wsdl/types/" xsi:type="q30:guid">13e05fbc-9971-45e2-a4e8-790292d85db0</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -2972,7 +2829,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q32="http://microsoft.com/wsdl/types/" xsi:type="q32:guid">2f2c70e1-f3ea-47f4-8d0b-7c5a6f5817df</Value>
+                            <Value xmlns:q31="http://microsoft.com/wsdl/types/" xsi:type="q31:guid">2f2c70e1-f3ea-47f4-8d0b-7c5a6f5817df</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -3081,7 +2938,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q33="http://microsoft.com/wsdl/types/" xsi:type="q33:guid">13e05fbc-9971-45e2-a4e8-790292d85db0</Value>
+                            <Value xmlns:q32="http://microsoft.com/wsdl/types/" xsi:type="q32:guid">13e05fbc-9971-45e2-a4e8-790292d85db0</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -3179,12 +3036,12 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>StartElementID</Name>
-                            <Value xmlns:q34="http://microsoft.com/wsdl/types/" xsi:type="q34:guid">13e05fbc-9971-45e2-a4e8-790292d85db0</Value>
+                            <Value xmlns:q33="http://microsoft.com/wsdl/types/" xsi:type="q33:guid">13e05fbc-9971-45e2-a4e8-790292d85db0</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>EndElementID</Name>
-                            <Value xmlns:q35="http://microsoft.com/wsdl/types/" xsi:type="q35:guid">7a8a078c-b606-433f-9103-7bd830b1c657</Value>
+                            <Value xmlns:q34="http://microsoft.com/wsdl/types/" xsi:type="q34:guid">7a8a078c-b606-433f-9103-7bd830b1c657</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -3209,7 +3066,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ExceptionHandlerId</Name>
-                            <Value xmlns:q36="http://microsoft.com/wsdl/types/" xsi:type="q36:guid">13e05fbc-9971-45e2-a4e8-790292d85db0</Value>
+                            <Value xmlns:q35="http://microsoft.com/wsdl/types/" xsi:type="q35:guid">13e05fbc-9971-45e2-a4e8-790292d85db0</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -3241,7 +3098,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q37="http://microsoft.com/wsdl/types/" xsi:type="q37:guid">c5e18d7f-a1f5-4014-bbaf-93302b60152c</Value>
+                            <Value xmlns:q36="http://microsoft.com/wsdl/types/" xsi:type="q36:guid">c5e18d7f-a1f5-4014-bbaf-93302b60152c</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -3345,7 +3202,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q38="http://microsoft.com/wsdl/types/" xsi:type="q38:guid">d9d7a461-1844-46f2-acb3-7634b14646cc</Value>
+                    <Value xmlns:q37="http://microsoft.com/wsdl/types/" xsi:type="q37:guid">d9d7a461-1844-46f2-acb3-7634b14646cc</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3392,18 +3249,34 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
             <IsIgnore>false</IsIgnore>
             <Components>
                 <SerializationComponent>
-                    <ClassName>LTools.Workflow.Elements.WFAssign</ClassName>
+                    <ClassName>LTools.Workflow.Elements.WFMultipleAssign</ClassName>
                     <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
                     <Properties>
                         <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>Variable</Name>
-                            <Value xsi:type="xsd:string">flagStart</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
-                            <Name>Data</Name>
-                            <Value xsi:type="xsd:string">(transactionData.Count + 1) == guideMark.Count</Value>
+                            <IsListValue>true</IsListValue>
+                            <Name>Items</Name>
+                            <ListValue>
+                                <SerializationItem>
+                                    <IsListValue>false</IsListValue>
+                                    <Name>Items</Name>
+                                    <Value xsi:type="MultipleAssignItem">
+                                        <Variable>nameWebDownloads</Variable>
+                                        <IsNoCodeVariable>false</IsNoCodeVariable>
+                                        <Assign>"ChromeProfileDownloads"</Assign>
+                                        <IsNoCodeAssign>false</IsNoCodeAssign>
+                                    </Value>
+                                </SerializationItem>
+                                <SerializationItem>
+                                    <IsListValue>false</IsListValue>
+                                    <Name>Items</Name>
+                                    <Value xsi:type="MultipleAssignItem">
+                                        <Variable>downloadPath</Variable>
+                                        <IsNoCodeVariable>false</IsNoCodeVariable>
+                                        <Assign>Path.Combine(Directory.GetCurrentDirectory(), nameWebDownloads)</Assign>
+                                        <IsNoCodeAssign>false</IsNoCodeAssign>
+                                    </Value>
+                                </SerializationItem>
+                            </ListValue>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -3412,7 +3285,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentName</Name>
-                            <Value xsi:type="xsd:string">Присвоение</Value>
+                            <Value xsi:type="xsd:string">Множественное присвоение</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -3429,7 +3302,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q39="http://microsoft.com/wsdl/types/" xsi:type="q39:guid">d0781868-0b91-46b6-8553-62d24435bec2</Value>
+                            <Value xmlns:q38="http://microsoft.com/wsdl/types/" xsi:type="q38:guid">87e224d5-07a6-4614-ab7a-d608be985d40</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -3481,6 +3354,15 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                     <Properties>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
+                            <Name>ComponentName</Name>
+                            <Value xsi:type="xsd:string">Try-Catch</Value>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
+                            <Name>Annotation</Name>
+                        </SerializationItem>
+                        <SerializationItem>
+                            <IsListValue>false</IsListValue>
                             <Name>Exc</Name>
                             <Value xsi:type="xsd:string">exception</Value>
                         </SerializationItem>
@@ -3527,11 +3409,6 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
-                            <Name>ComponentName</Name>
-                            <Value xsi:type="xsd:string">Try-Catch</Value>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
                             <Name>WaitBefore</Name>
                         </SerializationItem>
                         <SerializationItem>
@@ -3540,12 +3417,8 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
-                            <Name>Annotation</Name>
-                        </SerializationItem>
-                        <SerializationItem>
-                            <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q40="http://microsoft.com/wsdl/types/" xsi:type="q40:guid">bb446ef6-1133-4946-9e2c-e0fd3971a21d</Value>
+                            <Value xmlns:q39="http://microsoft.com/wsdl/types/" xsi:type="q39:guid">bb446ef6-1133-4946-9e2c-e0fd3971a21d</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -3665,13 +3538,6 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                                             <Direction>IN</Direction>
                                         </ScriptVariable>
                                         <ScriptVariable>
-                                            <Name>flagStart</Name>
-                                            <Group />
-                                            <DefaultValue xsi:type="xsd:string">flagStart</DefaultValue>
-                                            <DataTypeString>System.Boolean</DataTypeString>
-                                            <Direction>IN</Direction>
-                                        </ScriptVariable>
-                                        <ScriptVariable>
                                             <Name>pathExtension</Name>
                                             <Group />
                                             <DefaultValue xsi:type="xsd:string">pathExtension</DefaultValue>
@@ -3726,7 +3592,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>ComponentID</Name>
-                                    <Value xmlns:q41="http://microsoft.com/wsdl/types/" xsi:type="q41:guid">163ab64e-8b59-4f2b-9667-fba526ef2560</Value>
+                                    <Value xmlns:q40="http://microsoft.com/wsdl/types/" xsi:type="q40:guid">163ab64e-8b59-4f2b-9667-fba526ef2560</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
@@ -3886,7 +3752,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>ComponentID</Name>
-                                    <Value xmlns:q42="http://microsoft.com/wsdl/types/" xsi:type="q42:guid">6ac230af-311e-4040-984a-f814578e41aa</Value>
+                                    <Value xmlns:q41="http://microsoft.com/wsdl/types/" xsi:type="q41:guid">6ac230af-311e-4040-984a-f814578e41aa</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
@@ -3967,7 +3833,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q43="http://microsoft.com/wsdl/types/" xsi:type="q43:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
+                    <Value xmlns:q42="http://microsoft.com/wsdl/types/" xsi:type="q42:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -3990,7 +3856,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q44="http://microsoft.com/wsdl/types/" xsi:type="q44:guid">146210e0-61a9-40d6-a43f-1df48b733e75</Value>
+                    <Value xmlns:q43="http://microsoft.com/wsdl/types/" xsi:type="q43:guid">146210e0-61a9-40d6-a43f-1df48b733e75</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -4131,7 +3997,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q45="http://microsoft.com/wsdl/types/" xsi:type="q45:guid">00a4eb9e-5bf6-4e7c-8697-6503d2ca9ff2</Value>
+                            <Value xmlns:q44="http://microsoft.com/wsdl/types/" xsi:type="q44:guid">00a4eb9e-5bf6-4e7c-8697-6503d2ca9ff2</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -4276,7 +4142,7 @@ systemExPath = Path.GetFullPath(Path.Combine(systemExPath, "SystemEx"));</Value>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>ComponentID</Name>
-                                    <Value xmlns:q46="http://microsoft.com/wsdl/types/" xsi:type="q46:guid">a6742a3b-9513-4bfc-948d-8c529ca545bc</Value>
+                                    <Value xmlns:q45="http://microsoft.com/wsdl/types/" xsi:type="q45:guid">a6742a3b-9513-4bfc-948d-8c529ca545bc</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
@@ -4432,7 +4298,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q47="http://microsoft.com/wsdl/types/" xsi:type="q47:guid">e0057266-a678-4d2a-9718-fe7f9ae97c90</Value>
+                            <Value xmlns:q46="http://microsoft.com/wsdl/types/" xsi:type="q46:guid">e0057266-a678-4d2a-9718-fe7f9ae97c90</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -4485,7 +4351,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>Equation</Name>
-                            <Value xsi:type="xsd:string">!String.IsNullOrEmpty(nameWebDownload)</Value>
+                            <Value xsi:type="xsd:string">!String.IsNullOrEmpty(nameWebDownloads)</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -4521,7 +4387,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q48="http://microsoft.com/wsdl/types/" xsi:type="q48:guid">3504289a-aceb-442b-b573-e64b95627de8</Value>
+                            <Value xmlns:q47="http://microsoft.com/wsdl/types/" xsi:type="q47:guid">3504289a-aceb-442b-b573-e64b95627de8</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -4574,7 +4440,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>Equation</Name>
-                                    <Value xsi:type="xsd:string">Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), nameWebDownload))</Value>
+                                    <Value xsi:type="xsd:string">Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), nameWebDownloads))</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
@@ -4611,7 +4477,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>ComponentID</Name>
-                                    <Value xmlns:q49="http://microsoft.com/wsdl/types/" xsi:type="q49:guid">60bdd852-8dd3-467d-9118-fe98a322c9b4</Value>
+                                    <Value xmlns:q48="http://microsoft.com/wsdl/types/" xsi:type="q48:guid">60bdd852-8dd3-467d-9118-fe98a322c9b4</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
@@ -4664,7 +4530,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
                                             <Name>FileName</Name>
-                                            <Value xsi:type="xsd:string">Path.Combine(Directory.GetCurrentDirectory(), nameWebDownload)</Value>
+                                            <Value xsi:type="xsd:string">Path.Combine(Directory.GetCurrentDirectory(), nameWebDownloads)</Value>
                                         </SerializationItem>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
@@ -4691,7 +4557,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
                                             <Name>ComponentID</Name>
-                                            <Value xmlns:q50="http://microsoft.com/wsdl/types/" xsi:type="q50:guid">9d93b40a-eb51-4982-928e-f5ed6a545471</Value>
+                                            <Value xmlns:q49="http://microsoft.com/wsdl/types/" xsi:type="q49:guid">9d93b40a-eb51-4982-928e-f5ed6a545471</Value>
                                         </SerializationItem>
                                         <SerializationItem>
                                             <IsListValue>false</IsListValue>
@@ -4805,7 +4671,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q51="http://microsoft.com/wsdl/types/" xsi:type="q51:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
+                    <Value xmlns:q50="http://microsoft.com/wsdl/types/" xsi:type="q50:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -4881,7 +4747,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q52="http://microsoft.com/wsdl/types/" xsi:type="q52:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
+                    <Value xmlns:q51="http://microsoft.com/wsdl/types/" xsi:type="q51:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -4904,7 +4770,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q53="http://microsoft.com/wsdl/types/" xsi:type="q53:guid">6358100c-6456-49c1-904d-8a89b9c75ca2</Value>
+                    <Value xmlns:q52="http://microsoft.com/wsdl/types/" xsi:type="q52:guid">6358100c-6456-49c1-904d-8a89b9c75ca2</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -5050,7 +4916,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q54="http://microsoft.com/wsdl/types/" xsi:type="q54:guid">0025f140-9295-498d-ac13-62a72ae110d8</Value>
+                            <Value xmlns:q53="http://microsoft.com/wsdl/types/" xsi:type="q53:guid">0025f140-9295-498d-ac13-62a72ae110d8</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -5139,7 +5005,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q55="http://microsoft.com/wsdl/types/" xsi:type="q55:guid">55d32926-b974-4a9c-8694-5f6f800fa874</Value>
+                            <Value xmlns:q54="http://microsoft.com/wsdl/types/" xsi:type="q54:guid">55d32926-b974-4a9c-8694-5f6f800fa874</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -5233,7 +5099,7 @@ using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
                                     <Name>ComponentID</Name>
-                                    <Value xmlns:q56="http://microsoft.com/wsdl/types/" xsi:type="q56:guid">1faf88f4-f4e2-4d1a-8422-e7ce4ff604eb</Value>
+                                    <Value xmlns:q55="http://microsoft.com/wsdl/types/" xsi:type="q55:guid">1faf88f4-f4e2-4d1a-8422-e7ce4ff604eb</Value>
                                 </SerializationItem>
                                 <SerializationItem>
                                     <IsListValue>false</IsListValue>
@@ -5330,7 +5196,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q57="http://microsoft.com/wsdl/types/" xsi:type="q57:guid">12e3cc06-11dc-4aca-81f6-9143d773e657</Value>
+                            <Value xmlns:q56="http://microsoft.com/wsdl/types/" xsi:type="q56:guid">12e3cc06-11dc-4aca-81f6-9143d773e657</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -5431,7 +5297,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q58="http://microsoft.com/wsdl/types/" xsi:type="q58:guid">67facdd4-2a86-4f18-a089-f86bc5ce32a6</Value>
+                    <Value xmlns:q57="http://microsoft.com/wsdl/types/" xsi:type="q57:guid">67facdd4-2a86-4f18-a089-f86bc5ce32a6</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -5554,7 +5420,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
                             <Name>ComponentID</Name>
-                            <Value xmlns:q59="http://microsoft.com/wsdl/types/" xsi:type="q59:guid">7c6dc659-3e78-44ca-bdaf-7b529c27c004</Value>
+                            <Value xmlns:q58="http://microsoft.com/wsdl/types/" xsi:type="q58:guid">7c6dc659-3e78-44ca-bdaf-7b529c27c004</Value>
                         </SerializationItem>
                         <SerializationItem>
                             <IsListValue>false</IsListValue>
@@ -5647,12 +5513,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q60="http://microsoft.com/wsdl/types/" xsi:type="q60:guid">9e4ba096-c586-4a97-ba94-d48b0f94da43</Value>
+                    <Value xmlns:q59="http://microsoft.com/wsdl/types/" xsi:type="q59:guid">9e4ba096-c586-4a97-ba94-d48b0f94da43</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q61="http://microsoft.com/wsdl/types/" xsi:type="q61:guid">a6035751-5793-43cb-a23f-953b3e5f4464</Value>
+                    <Value xmlns:q60="http://microsoft.com/wsdl/types/" xsi:type="q60:guid">a6035751-5793-43cb-a23f-953b3e5f4464</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -5708,7 +5574,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q62="http://microsoft.com/wsdl/types/" xsi:type="q62:guid">70398b61-8742-414b-899f-b9486bee4337</Value>
+                    <Value xmlns:q61="http://microsoft.com/wsdl/types/" xsi:type="q61:guid">70398b61-8742-414b-899f-b9486bee4337</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -5800,12 +5666,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q63="http://microsoft.com/wsdl/types/" xsi:type="q63:guid">9e4ba096-c586-4a97-ba94-d48b0f94da43</Value>
+                    <Value xmlns:q62="http://microsoft.com/wsdl/types/" xsi:type="q62:guid">9e4ba096-c586-4a97-ba94-d48b0f94da43</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q64="http://microsoft.com/wsdl/types/" xsi:type="q64:guid">b06aab90-8dad-436d-8de2-d0e4f95eef16</Value>
+                    <Value xmlns:q63="http://microsoft.com/wsdl/types/" xsi:type="q63:guid">b06aab90-8dad-436d-8de2-d0e4f95eef16</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -5830,7 +5696,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q65="http://microsoft.com/wsdl/types/" xsi:type="q65:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
+                    <Value xmlns:q64="http://microsoft.com/wsdl/types/" xsi:type="q64:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -5862,7 +5728,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q66="http://microsoft.com/wsdl/types/" xsi:type="q66:guid">9cb18697-627a-4d13-8bc4-f923e962c46b</Value>
+                    <Value xmlns:q65="http://microsoft.com/wsdl/types/" xsi:type="q65:guid">9cb18697-627a-4d13-8bc4-f923e962c46b</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -5944,12 +5810,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q67="http://microsoft.com/wsdl/types/" xsi:type="q67:guid">6294d421-beb1-42ec-89be-a68f0666b5f3</Value>
+                    <Value xmlns:q66="http://microsoft.com/wsdl/types/" xsi:type="q66:guid">6294d421-beb1-42ec-89be-a68f0666b5f3</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q68="http://microsoft.com/wsdl/types/" xsi:type="q68:guid">42984afc-ede8-4aac-8394-7fb97a86927a</Value>
+                    <Value xmlns:q67="http://microsoft.com/wsdl/types/" xsi:type="q67:guid">42984afc-ede8-4aac-8394-7fb97a86927a</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6005,7 +5871,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q69="http://microsoft.com/wsdl/types/" xsi:type="q69:guid">f31c6eec-6ce5-4df1-88d1-cfc69e0f1d65</Value>
+                    <Value xmlns:q68="http://microsoft.com/wsdl/types/" xsi:type="q68:guid">f31c6eec-6ce5-4df1-88d1-cfc69e0f1d65</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6096,12 +5962,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q70="http://microsoft.com/wsdl/types/" xsi:type="q70:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
+                    <Value xmlns:q69="http://microsoft.com/wsdl/types/" xsi:type="q69:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q71="http://microsoft.com/wsdl/types/" xsi:type="q71:guid">6294d421-beb1-42ec-89be-a68f0666b5f3</Value>
+                    <Value xmlns:q70="http://microsoft.com/wsdl/types/" xsi:type="q70:guid">6294d421-beb1-42ec-89be-a68f0666b5f3</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6126,7 +5992,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q72="http://microsoft.com/wsdl/types/" xsi:type="q72:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
+                    <Value xmlns:q71="http://microsoft.com/wsdl/types/" xsi:type="q71:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6158,7 +6024,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q73="http://microsoft.com/wsdl/types/" xsi:type="q73:guid">a532e951-c58a-4f73-9711-66e5ab0c4eeb</Value>
+                    <Value xmlns:q72="http://microsoft.com/wsdl/types/" xsi:type="q72:guid">a532e951-c58a-4f73-9711-66e5ab0c4eeb</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6249,12 +6115,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q74="http://microsoft.com/wsdl/types/" xsi:type="q74:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
+                    <Value xmlns:q73="http://microsoft.com/wsdl/types/" xsi:type="q73:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q75="http://microsoft.com/wsdl/types/" xsi:type="q75:guid">6294d421-beb1-42ec-89be-a68f0666b5f3</Value>
+                    <Value xmlns:q74="http://microsoft.com/wsdl/types/" xsi:type="q74:guid">6294d421-beb1-42ec-89be-a68f0666b5f3</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6310,7 +6176,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q76="http://microsoft.com/wsdl/types/" xsi:type="q76:guid">3a384a36-759d-42af-9024-0456ec423d3f</Value>
+                    <Value xmlns:q75="http://microsoft.com/wsdl/types/" xsi:type="q75:guid">3a384a36-759d-42af-9024-0456ec423d3f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6392,12 +6258,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q77="http://microsoft.com/wsdl/types/" xsi:type="q77:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
+                    <Value xmlns:q76="http://microsoft.com/wsdl/types/" xsi:type="q76:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q78="http://microsoft.com/wsdl/types/" xsi:type="q78:guid">d9d7a461-1844-46f2-acb3-7634b14646cc</Value>
+                    <Value xmlns:q77="http://microsoft.com/wsdl/types/" xsi:type="q77:guid">d9d7a461-1844-46f2-acb3-7634b14646cc</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6422,7 +6288,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q79="http://microsoft.com/wsdl/types/" xsi:type="q79:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
+                    <Value xmlns:q78="http://microsoft.com/wsdl/types/" xsi:type="q78:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6454,7 +6320,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q80="http://microsoft.com/wsdl/types/" xsi:type="q80:guid">47200306-6fac-475f-9b4f-cb1303f3cf4c</Value>
+                    <Value xmlns:q79="http://microsoft.com/wsdl/types/" xsi:type="q79:guid">47200306-6fac-475f-9b4f-cb1303f3cf4c</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6536,12 +6402,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q81="http://microsoft.com/wsdl/types/" xsi:type="q81:guid">d9d7a461-1844-46f2-acb3-7634b14646cc</Value>
+                    <Value xmlns:q80="http://microsoft.com/wsdl/types/" xsi:type="q80:guid">d9d7a461-1844-46f2-acb3-7634b14646cc</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q82="http://microsoft.com/wsdl/types/" xsi:type="q82:guid">0147c038-6756-44b5-a747-a89a51e7a540</Value>
+                    <Value xmlns:q81="http://microsoft.com/wsdl/types/" xsi:type="q81:guid">0147c038-6756-44b5-a747-a89a51e7a540</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6597,7 +6463,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q83="http://microsoft.com/wsdl/types/" xsi:type="q83:guid">f2f7e2d4-fce8-46de-b2cf-9dea1a0f366f</Value>
+                    <Value xmlns:q82="http://microsoft.com/wsdl/types/" xsi:type="q82:guid">f2f7e2d4-fce8-46de-b2cf-9dea1a0f366f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6680,12 +6546,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q84="http://microsoft.com/wsdl/types/" xsi:type="q84:guid">a6035751-5793-43cb-a23f-953b3e5f4464</Value>
+                    <Value xmlns:q83="http://microsoft.com/wsdl/types/" xsi:type="q83:guid">a6035751-5793-43cb-a23f-953b3e5f4464</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q85="http://microsoft.com/wsdl/types/" xsi:type="q85:guid">146210e0-61a9-40d6-a43f-1df48b733e75</Value>
+                    <Value xmlns:q84="http://microsoft.com/wsdl/types/" xsi:type="q84:guid">146210e0-61a9-40d6-a43f-1df48b733e75</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6710,7 +6576,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q86="http://microsoft.com/wsdl/types/" xsi:type="q86:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
+                    <Value xmlns:q85="http://microsoft.com/wsdl/types/" xsi:type="q85:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6742,7 +6608,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q87="http://microsoft.com/wsdl/types/" xsi:type="q87:guid">b67d1ca1-9c20-487c-b6ad-0d869144372a</Value>
+                    <Value xmlns:q86="http://microsoft.com/wsdl/types/" xsi:type="q86:guid">b67d1ca1-9c20-487c-b6ad-0d869144372a</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6833,12 +6699,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q88="http://microsoft.com/wsdl/types/" xsi:type="q88:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
+                    <Value xmlns:q87="http://microsoft.com/wsdl/types/" xsi:type="q87:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q89="http://microsoft.com/wsdl/types/" xsi:type="q89:guid">6294d421-beb1-42ec-89be-a68f0666b5f3</Value>
+                    <Value xmlns:q88="http://microsoft.com/wsdl/types/" xsi:type="q88:guid">6294d421-beb1-42ec-89be-a68f0666b5f3</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6863,7 +6729,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q90="http://microsoft.com/wsdl/types/" xsi:type="q90:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
+                    <Value xmlns:q89="http://microsoft.com/wsdl/types/" xsi:type="q89:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6895,7 +6761,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q91="http://microsoft.com/wsdl/types/" xsi:type="q91:guid">668f4219-3ba3-409a-a290-889c0722cd23</Value>
+                    <Value xmlns:q90="http://microsoft.com/wsdl/types/" xsi:type="q90:guid">668f4219-3ba3-409a-a290-889c0722cd23</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -6977,12 +6843,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q92="http://microsoft.com/wsdl/types/" xsi:type="q92:guid">146210e0-61a9-40d6-a43f-1df48b733e75</Value>
+                    <Value xmlns:q91="http://microsoft.com/wsdl/types/" xsi:type="q91:guid">146210e0-61a9-40d6-a43f-1df48b733e75</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q93="http://microsoft.com/wsdl/types/" xsi:type="q93:guid">b06aab90-8dad-436d-8de2-d0e4f95eef16</Value>
+                    <Value xmlns:q92="http://microsoft.com/wsdl/types/" xsi:type="q92:guid">b06aab90-8dad-436d-8de2-d0e4f95eef16</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7007,7 +6873,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q94="http://microsoft.com/wsdl/types/" xsi:type="q94:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
+                    <Value xmlns:q93="http://microsoft.com/wsdl/types/" xsi:type="q93:guid">bfaf117c-e9ff-4c14-95de-f2c77b1470f5</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7039,7 +6905,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q95="http://microsoft.com/wsdl/types/" xsi:type="q95:guid">44845d15-bbfb-48b5-b1bb-29338876b452</Value>
+                    <Value xmlns:q94="http://microsoft.com/wsdl/types/" xsi:type="q94:guid">44845d15-bbfb-48b5-b1bb-29338876b452</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7139,12 +7005,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q96="http://microsoft.com/wsdl/types/" xsi:type="q96:guid">a6035751-5793-43cb-a23f-953b3e5f4464</Value>
+                    <Value xmlns:q95="http://microsoft.com/wsdl/types/" xsi:type="q95:guid">a6035751-5793-43cb-a23f-953b3e5f4464</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q97="http://microsoft.com/wsdl/types/" xsi:type="q97:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
+                    <Value xmlns:q96="http://microsoft.com/wsdl/types/" xsi:type="q96:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7169,7 +7035,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q98="http://microsoft.com/wsdl/types/" xsi:type="q98:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
+                    <Value xmlns:q97="http://microsoft.com/wsdl/types/" xsi:type="q97:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7201,7 +7067,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q99="http://microsoft.com/wsdl/types/" xsi:type="q99:guid">c9e8df6d-ee0e-4614-85c0-29ea7b6bb226</Value>
+                    <Value xmlns:q98="http://microsoft.com/wsdl/types/" xsi:type="q98:guid">c9e8df6d-ee0e-4614-85c0-29ea7b6bb226</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7283,12 +7149,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q100="http://microsoft.com/wsdl/types/" xsi:type="q100:guid">67facdd4-2a86-4f18-a089-f86bc5ce32a6</Value>
+                    <Value xmlns:q99="http://microsoft.com/wsdl/types/" xsi:type="q99:guid">67facdd4-2a86-4f18-a089-f86bc5ce32a6</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q101="http://microsoft.com/wsdl/types/" xsi:type="q101:guid">ba3a3f28-a82a-4a13-8546-9627824d8c41</Value>
+                    <Value xmlns:q100="http://microsoft.com/wsdl/types/" xsi:type="q100:guid">ba3a3f28-a82a-4a13-8546-9627824d8c41</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7313,7 +7179,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q102="http://microsoft.com/wsdl/types/" xsi:type="q102:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
+                    <Value xmlns:q101="http://microsoft.com/wsdl/types/" xsi:type="q101:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7345,7 +7211,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q103="http://microsoft.com/wsdl/types/" xsi:type="q103:guid">d336cb87-04ad-4ec5-9514-44e50db7f311</Value>
+                    <Value xmlns:q102="http://microsoft.com/wsdl/types/" xsi:type="q102:guid">d336cb87-04ad-4ec5-9514-44e50db7f311</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7427,12 +7293,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q104="http://microsoft.com/wsdl/types/" xsi:type="q104:guid">f40befc5-6b1f-4072-85b1-5915472e5b24</Value>
+                    <Value xmlns:q103="http://microsoft.com/wsdl/types/" xsi:type="q103:guid">f40befc5-6b1f-4072-85b1-5915472e5b24</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q105="http://microsoft.com/wsdl/types/" xsi:type="q105:guid">67facdd4-2a86-4f18-a089-f86bc5ce32a6</Value>
+                    <Value xmlns:q104="http://microsoft.com/wsdl/types/" xsi:type="q104:guid">67facdd4-2a86-4f18-a089-f86bc5ce32a6</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7488,7 +7354,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q106="http://microsoft.com/wsdl/types/" xsi:type="q106:guid">b3961cfd-88e3-4433-af29-8cd4226e6644</Value>
+                    <Value xmlns:q105="http://microsoft.com/wsdl/types/" xsi:type="q105:guid">b3961cfd-88e3-4433-af29-8cd4226e6644</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7570,12 +7436,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q107="http://microsoft.com/wsdl/types/" xsi:type="q107:guid">ba3a3f28-a82a-4a13-8546-9627824d8c41</Value>
+                    <Value xmlns:q106="http://microsoft.com/wsdl/types/" xsi:type="q106:guid">ba3a3f28-a82a-4a13-8546-9627824d8c41</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q108="http://microsoft.com/wsdl/types/" xsi:type="q108:guid">6358100c-6456-49c1-904d-8a89b9c75ca2</Value>
+                    <Value xmlns:q107="http://microsoft.com/wsdl/types/" xsi:type="q107:guid">6358100c-6456-49c1-904d-8a89b9c75ca2</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7600,7 +7466,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q109="http://microsoft.com/wsdl/types/" xsi:type="q109:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
+                    <Value xmlns:q108="http://microsoft.com/wsdl/types/" xsi:type="q108:guid">67cbd784-8dd8-4454-a5fc-3dee8b9fc50b</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7632,7 +7498,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q110="http://microsoft.com/wsdl/types/" xsi:type="q110:guid">5f533f07-c718-461a-89da-2e4718c1e924</Value>
+                    <Value xmlns:q109="http://microsoft.com/wsdl/types/" xsi:type="q109:guid">5f533f07-c718-461a-89da-2e4718c1e924</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7714,12 +7580,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q111="http://microsoft.com/wsdl/types/" xsi:type="q111:guid">6358100c-6456-49c1-904d-8a89b9c75ca2</Value>
+                    <Value xmlns:q110="http://microsoft.com/wsdl/types/" xsi:type="q110:guid">6358100c-6456-49c1-904d-8a89b9c75ca2</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q112="http://microsoft.com/wsdl/types/" xsi:type="q112:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
+                    <Value xmlns:q111="http://microsoft.com/wsdl/types/" xsi:type="q111:guid">edf044e2-9733-4126-92bf-34d3598ba38f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7744,7 +7610,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ExceptionHandlerId</Name>
-                    <Value xmlns:q113="http://microsoft.com/wsdl/types/" xsi:type="q113:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
+                    <Value xmlns:q112="http://microsoft.com/wsdl/types/" xsi:type="q112:guid">c5472f63-2d53-4b69-94b0-023c18300a8f</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7776,7 +7642,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q114="http://microsoft.com/wsdl/types/" xsi:type="q114:guid">12c0667f-637a-46f7-8c6d-6e5dddd8d8f8</Value>
+                    <Value xmlns:q113="http://microsoft.com/wsdl/types/" xsi:type="q113:guid">12c0667f-637a-46f7-8c6d-6e5dddd8d8f8</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7844,7 +7710,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                             <Name>PointsList</Name>
                             <Value xsi:type="Point">
                                 <X>1109.8393406593407</X>
-                                <Y>1377.1839074452719</Y>
+                                <Y>1375.1839074452719</Y>
                             </Value>
                         </SerializationItem>
                     </ListValue>
@@ -7867,12 +7733,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q115="http://microsoft.com/wsdl/types/" xsi:type="q115:guid">0147c038-6756-44b5-a747-a89a51e7a540</Value>
+                    <Value xmlns:q114="http://microsoft.com/wsdl/types/" xsi:type="q114:guid">0147c038-6756-44b5-a747-a89a51e7a540</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q116="http://microsoft.com/wsdl/types/" xsi:type="q116:guid">9e4ba096-c586-4a97-ba94-d48b0f94da43</Value>
+                    <Value xmlns:q115="http://microsoft.com/wsdl/types/" xsi:type="q115:guid">9e4ba096-c586-4a97-ba94-d48b0f94da43</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -7928,7 +7794,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q117="http://microsoft.com/wsdl/types/" xsi:type="q117:guid">dca1fe46-a082-441b-a2ab-7e629c2d302a</Value>
+                    <Value xmlns:q116="http://microsoft.com/wsdl/types/" xsi:type="q116:guid">dca1fe46-a082-441b-a2ab-7e629c2d302a</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -8010,12 +7876,12 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>StartElementID</Name>
-                    <Value xmlns:q118="http://microsoft.com/wsdl/types/" xsi:type="q118:guid">42984afc-ede8-4aac-8394-7fb97a86927a</Value>
+                    <Value xmlns:q117="http://microsoft.com/wsdl/types/" xsi:type="q117:guid">42984afc-ede8-4aac-8394-7fb97a86927a</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>EndElementID</Name>
-                    <Value xmlns:q119="http://microsoft.com/wsdl/types/" xsi:type="q119:guid">9e4ba096-c586-4a97-ba94-d48b0f94da43</Value>
+                    <Value xmlns:q118="http://microsoft.com/wsdl/types/" xsi:type="q118:guid">9e4ba096-c586-4a97-ba94-d48b0f94da43</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -8071,7 +7937,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
                     <Name>ComponentID</Name>
-                    <Value xmlns:q120="http://microsoft.com/wsdl/types/" xsi:type="q120:guid">4b2f7171-ee97-4ed0-b8d6-81fec3854f77</Value>
+                    <Value xmlns:q119="http://microsoft.com/wsdl/types/" xsi:type="q119:guid">4b2f7171-ee97-4ed0-b8d6-81fec3854f77</Value>
                 </SerializationItem>
                 <SerializationItem>
                     <IsListValue>false</IsListValue>
@@ -8129,7 +7995,7 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
         </ScriptVariable>
         <ScriptVariable>
             <Name>Config</Name>
-            <Group>Main</Group>
+            <Group>ConfigData</Group>
             <Comment>Коллекция параметров и констант из конфигурационного файла</Comment>
             <DataTypeString>System.Collections.Generic.Dictionary&lt;System.String,System.Object&gt;</DataTypeString>
             <Direction>IN_OUT</Direction>
@@ -8223,12 +8089,6 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
             <Direction>IN_OUT</Direction>
         </ScriptVariable>
         <ScriptVariable>
-            <Name>flagStart</Name>
-            <Group>Флаги</Group>
-            <DataTypeString>Boolean</DataTypeString>
-            <Direction>IN_OUT</Direction>
-        </ScriptVariable>
-        <ScriptVariable>
             <Name>businessExPath</Name>
             <Group>Exception</Group>
             <DataTypeString>System.String</DataTypeString>
@@ -8241,7 +8101,13 @@ dtSummary.Columns.Add("Вес", typeof(double));</Value>
             <Direction>IN_OUT</Direction>
         </ScriptVariable>
         <ScriptVariable>
-            <Name>nameWebDownload</Name>
+            <Name>nameWebDownloads</Name>
+            <Group>Main</Group>
+            <DataTypeString>System.String</DataTypeString>
+            <Direction>IN_OUT</Direction>
+        </ScriptVariable>
+        <ScriptVariable>
+            <Name>downloadPath</Name>
             <Group>Main</Group>
             <DataTypeString>System.String</DataTypeString>
             <Direction>IN_OUT</Direction>
